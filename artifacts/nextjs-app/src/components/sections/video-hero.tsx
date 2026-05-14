@@ -12,13 +12,17 @@ export default function VideoHero() {
 
   return (
     <section className="relative overflow-hidden min-h-[100svh] flex items-center px-4 py-24">
-      {/* Video background */}
-      {!videoError ? (
+      {/* Always-visible dark fallback — instant dark bg before video loads, and permanent fallback on error */}
+      <div className="absolute inset-0 bg-[#171717] -z-10" aria-hidden="true" />
+
+      {/* Video — same z-index layer, DOM order paints it on top of the fallback div */}
+      {!videoError && (
         <video
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover -z-10"
           aria-hidden="true"
           onError={() => setVideoError(true)}
@@ -28,8 +32,6 @@ export default function VideoHero() {
             type="video/mp4"
           />
         </video>
-      ) : (
-        <div className="absolute inset-0 -z-10 bg-[#171717]" aria-hidden="true" />
       )}
 
       {/* Dark overlay for readability */}

@@ -59,6 +59,7 @@ export default async function AProposPage({ params }: Props) {
               src="https://omi.mr/assets/images/resource/about-1.jpg"
               alt="OMI usine Mauritanie"
               fill
+              priority
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />

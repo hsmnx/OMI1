@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 const items = [
   { ordinal: '01', titleKey: 'item1Title', bodyKey: 'item1Body' },
@@ -11,6 +11,7 @@ const items = [
 
 export default function WhyOMI() {
   const t = useTranslations('whyOmi');
+  const shouldReduce = useReducedMotion();
 
   return (
     <section className="py-24 px-4 bg-[#f8f7f5]">
@@ -25,7 +26,7 @@ export default function WhyOMI() {
           {items.map(({ ordinal, titleKey, bodyKey }, index) => (
             <motion.div
               key={ordinal}
-              initial={{ opacity: 0, y: 24 }}
+              initial={shouldReduce ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

@@ -19,6 +19,7 @@ const cspHeader = [
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'omi.mr' }],
+    minimumCacheTTL: 86400,
   },
 
   async headers() {
