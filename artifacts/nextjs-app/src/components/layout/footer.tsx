@@ -26,7 +26,7 @@ export default async function Footer({ locale }: Props) {
       <div className="max-w-6xl mx-auto px-4 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1 — Brand */}
         <div className="flex flex-col gap-4">
-          <Image src="/logo.png" alt="OMI" width={60} height={44} className="h-9 w-auto brightness-0 invert" />
+          <Image src="/logo.png" alt={tn('brandLogoAlt')} width={60} height={44} className="h-9 w-auto brightness-0 invert" />
           <p className="text-sm leading-relaxed text-neutral-400">{t('aboutBody')}</p>
         </div>
 
