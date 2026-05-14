@@ -6,14 +6,18 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const cspHeader = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "font-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "img-src 'self' data: blob: https://omi.mr",
+  "font-src 'self' https://fonts.gstatic.com",
   "connect-src 'self'",
   "frame-ancestors 'none'",
 ].join('; ');
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 'omi.mr' }],
+  },
+
   async redirects() {
     return [
       {
@@ -29,10 +33,11 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000' },
           { key: 'Content-Security-Policy', value: cspHeader },
           {
             key: 'Permissions-Policy',
