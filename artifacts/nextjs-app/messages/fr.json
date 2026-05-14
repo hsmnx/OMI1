@@ -1,0 +1,41 @@
+{
+  "site": {
+    "title": "Fondation Technique",
+    "description": "Une base technique solide, bilingue et prête pour la production."
+  },
+  "nav": {
+    "home": "Accueil",
+    "switchLang": "عربي",
+    "switchLangLocale": "ar"
+  },
+  "hero": {
+    "headline": "Prêt pour la production",
+    "subheadline": "Une fondation propre, bilingue et extensible pour votre prochain projet web.",
+    "cta": "Voir les fonctionnalités"
+  },
+  "cards": {
+    "title": "Fonctionnalités incluses",
+    "item1": {
+      "title": "Bilingue FR / AR",
+      "description": "Routage par locale avec basculement RTL automatique pour l'arabe."
+    },
+    "item2": {
+      "title": "Composants UI",
+      "description": "Composants accessibles et réutilisables via shadcn/ui et Tailwind CSS."
+    },
+    "item3": {
+      "title": "Animations fluides",
+      "description": "Transitions et entrées animées grâce à Motion for React."
+    },
+    "item4": {
+      "title": "Validation Zod",
+      "description": "Validation des données côté serveur avec Zod sur les routes API."
+    }
+  },
+  "api": {
+    "badge": "Exemple API"
+  },
+  "footer": {
+    "rights": "Tous droits réservés."
+  }
+}
