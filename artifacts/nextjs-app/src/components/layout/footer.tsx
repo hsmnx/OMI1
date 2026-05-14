@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { CONTACT, SOCIAL } from '@/data/siteContent';
@@ -25,10 +26,7 @@ export default async function Footer({ locale }: Props) {
       <div className="max-w-6xl mx-auto px-4 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1 — Brand */}
         <div className="flex flex-col gap-4">
-          <div className="flex items-baseline gap-0.5">
-            <span className="text-2xl font-semibold text-white">OMI</span>
-            <span className="text-xs text-neutral-500 ms-1">MR</span>
-          </div>
+          <Image src="/logo.png" alt="OMI" width={60} height={44} className="h-9 w-auto brightness-0 invert" />
           <p className="text-sm leading-relaxed text-neutral-400">{t('aboutBody')}</p>
         </div>
 

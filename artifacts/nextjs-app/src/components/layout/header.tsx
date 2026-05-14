@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname, Link } from '@/i18n/navigation';
 import { AnimatePresence, motion } from 'motion/react';
@@ -35,9 +36,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-baseline gap-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm">
-          <span className="text-2xl font-semibold tracking-tight text-neutral-900">OMI</span>
-          <span className="text-xs text-neutral-400 ms-1">MR</span>
+        <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm">
+          <Image src="/logo.png" alt="OMI" width={60} height={44} priority className="h-9 w-auto" />
         </Link>
 
         {/* Desktop nav */}
