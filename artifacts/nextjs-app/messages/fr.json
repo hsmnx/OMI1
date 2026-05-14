@@ -69,12 +69,10 @@
     "savon": "Savons en pâte",
     "vitres": "Nettoyant vitres",
     "surface": "Nettoyant surface",
-    "vaisselle": "Nettoyant vaisselle"
-  },
-  "featuredProducts": {
-    "sectionTitle": "Nos produits",
-    "sectionSubtitle": "Une gamme complète de produits de nettoyage formulés pour chaque besoin.",
-    "viewAll": "Voir tous les produits"
+    "vaisselle": "Nettoyant vaisselle",
+    "sectionTitle": "Nos catégories",
+    "sectionSubtitle": "Découvrez notre gamme complète, organisée par type de produit.",
+    "productsCount": "{count, plural, one {# produit} other {# produits}}"
   },
   "whyOmi": {
     "sectionTitle": "Ce qui nous distingue",

@@ -12,6 +12,7 @@ const cspHeader = [
   "img-src 'self' data: blob: https://omi.mr",
   "font-src 'self' https://fonts.gstatic.com",
   "connect-src 'self'",
+  "media-src 'self' https://omi.mr",
   "frame-ancestors 'none'",
 ].join('; ');
 

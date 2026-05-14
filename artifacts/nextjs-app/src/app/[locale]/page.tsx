@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { products } from '@/data/products';
-import { getCategoryById } from '@/data/categories';
 import { CONTACT } from '@/data/siteContent';
-import HeroSection from '@/components/sections/hero';
+import VideoHero from '@/components/sections/video-hero';
 import MarqueeBanner from '@/components/sections/marquee-banner';
-import ProductCard from '@/components/sections/product-card';
+import CategoriesGrid from '@/components/sections/categories-grid';
 import WhyOMI from '@/components/sections/why-omi';
 
 type Props = {
@@ -24,11 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'featuredProducts' });
   const ta = await getTranslations({ locale, namespace: 'aboutSnippet' });
   const tc = await getTranslations({ locale, namespace: 'contactCta' });
-
-  const featured = products.slice(0, 6);
 
   const orgSchema = {
     '@context': 'https://schema.org',
@@ -55,48 +50,14 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
 
-      {/* Hero */}
-      <HeroSection />
+      {/* Video hero */}
+      <VideoHero />
 
       {/* Marquee */}
       <MarqueeBanner />
 
-      {/* Featured products */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <h2 className="text-3xl font-semibold text-neutral-900">{t('sectionTitle')}</h2>
-              <p className="text-neutral-500 mt-1">{t('sectionSubtitle')}</p>
-            </div>
-            <Link
-              href="/produits"
-              className="text-sm font-medium text-neutral-700 underline underline-offset-4 hover:text-neutral-900 transition-colors hidden sm:block"
-            >
-              {t('viewAll')}
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featured.map((product) => {
-              const cat = getCategoryById(product.categoryId);
-              const categoryName = cat ? (locale === 'ar' ? cat.nameAr : cat.nameFr) : '';
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  locale={locale}
-                  categoryName={categoryName}
-                />
-              );
-            })}
-          </div>
-          <div className="mt-10 text-center sm:hidden">
-            <Link href="/produits" className="text-sm font-medium underline underline-offset-4 text-neutral-700 hover:text-neutral-900">
-              {t('viewAll')}
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Categories */}
+      <CategoriesGrid />
 
       {/* Why OMI */}
       <WhyOMI />

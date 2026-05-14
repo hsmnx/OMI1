@@ -158,6 +158,66 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 3 — 2026-05-14)
+
+Runtime crash fix and CLAUDE.md compliance pass. The app was crashing at runtime despite a clean build. 9 issues were identified and resolved.
+
+### Updated — Crash Fix
+
+| File | What Changed |
+|------|--------------|
+| `src/components/layout/footer.tsx` | **Critical crash fix.** Removed implicit `getLocale()` + `getTranslations()` calls that relied on async request context. Component now accepts an explicit `locale: string` prop and passes it directly to `getTranslations({ locale, namespace })` — consistent with every other server component in the codebase. |
+| `src/app/[locale]/layout.tsx` | Passes `locale={locale}` to `<Footer />` to satisfy the new explicit prop. |
+
+### Updated — Animation Rule Compliance (CLAUDE.md)
+
+| File | What Changed |
+|------|--------------|
+| `src/components/layout/header.tsx` | Mobile menu drawer was animating `height: 0 → 'auto'` (layout-affecting). Replaced with `opacity` + `y` (transform only), per CLAUDE.md: *"No layout-affecting animations (no width/height/top/left)"*. |
+| `src/components/sections/hero.tsx` | Added `useReducedMotion()` hook. Both `motion.div` blocks now set `initial={false}` when reduced motion is preferred, per CLAUDE.md: *"Always wrap Motion animations in `prefers-reduced-motion` checks."* |
+
+### Updated — i18n Correctness
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/category-filter.tsx` | Removed hardcoded Arabic string `'الكل'`. Both locales now use `t('products.filterAll')` from the translation files (both `fr.json` and `ar.json` already defined this key). |
+
+### Updated — next-intl Best Practice
+
+| File | What Changed |
+|------|--------------|
+| `src/middleware.ts` | Changed from inline `createMiddleware({ locales, defaultLocale })` to `createMiddleware(routing)` using the shared `routing` object imported from `@/i18n/routing`. Future changes to the routing config now propagate automatically. |
+
+### Updated — Config Cleanup
+
+| File | What Changed |
+|------|--------------|
+| `next.config.ts` | Removed redundant `/` → `/fr` redirect — the next-intl middleware already handles this. Also added `'unsafe-eval'` to `script-src` in development mode only (`isDev` guard), needed by Next.js HMR. |
+
+### Updated — CSS Correctness
+
+| File | What Changed |
+|------|--------------|
+| `src/globals.css` | Fixed `[dir='rtl'] body` font rule. Was using literal `'Tajawal'` which `next/font/google` does not register under its real name. Now uses `var(--font-arabic)` — the CSS variable declared by `Tajawal({ variable: '--font-arabic' })` in `layout.tsx`. |
+
+### Updated — Security
+
+| File | What Changed |
+|------|--------------|
+| `src/app/api/contact/route.ts` | Fixed unbounded memory growth in the in-memory rate limiter. Added a prune pass inside `isRateLimited` that deletes Map entries where all timestamps have expired (> 60s old). The Map is now bounded to IPs with activity in the last 60 seconds. |
+
+### QA Results
+
+All commands run from `artifacts/nextjs-app/`:
+
+| Command | Result |
+|---------|--------|
+| `pnpm typecheck` | ✅ No TypeScript errors |
+| `pnpm lint` | ✅ No ESLint warnings or errors |
+| `pnpm build` | ✅ 49/49 pages generated successfully |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |

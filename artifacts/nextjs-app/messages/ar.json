@@ -69,12 +69,10 @@
     "savon": "صابون القوالب",
     "vitres": "منظف الزجاج",
     "surface": "منظف الأسطح",
-    "vaisselle": "منظف الأواني"
-  },
-  "featuredProducts": {
-    "sectionTitle": "منتجاتنا",
-    "sectionSubtitle": "مجموعة كاملة من منتجات التنظيف المُصنَّعة لتلبية كل احتياج.",
-    "viewAll": "عرض جميع المنتجات"
+    "vaisselle": "منظف الأواني",
+    "sectionTitle": "فئاتنا",
+    "sectionSubtitle": "اكتشف مجموعتنا الكاملة، مُنظَّمة حسب نوع المنتج.",
+    "productsCount": "{count, plural, zero {# منتجات} one {# منتج} two {# منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}"
   },
   "whyOmi": {
     "sectionTitle": "ما يميزنا",

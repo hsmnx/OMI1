@@ -7,6 +7,36 @@
 **Site type:** Public marketing and product catalog website  
 **Working directory:** `artifacts/nextjs-app/`
 
+## Impeccable Design Commands
+
+Installed via `npx skills add pbakaus/impeccable`. Use these slash commands to improve the UI:
+
+| Command | Purpose |
+|---|---|
+| `/craft` | Design or redesign a UI component end-to-end with committed choices |
+| `/teach` | Explain design decisions and principles behind the current UI |
+| `/document` | Generate design system documentation for components or tokens |
+| `/extract` | Extract reusable design tokens or patterns from existing UI |
+| `/shape` | Reshape layout structure and visual hierarchy |
+| `/critique` | UX evaluation with scoring and persona-based testing |
+| `/audit` | Technical quality checks for accessibility and performance |
+| `/polish` | Final quality pass — alignment, spacing, micro-details |
+| `/bolder` | Make a bland or timid design more confident and expressive |
+| `/quieter` | Calm down a loud or cluttered design |
+| `/distill` | Strip a UI down to its essential elements |
+| `/harden` | Add error states, edge cases, and defensive UI patterns |
+| `/onboard` | Design or improve onboarding and empty states |
+| `/animate` | Add purposeful animations and micro-interactions |
+| `/colorize` | Improve or rethink the color system |
+| `/typeset` | Improve typography — scale, weight, leading, pairing |
+| `/layout` | Fix or redesign spacing, grid, and layout rhythm |
+| `/delight` | Add moments of joy and personality to the UI |
+| `/overdrive` | Push ambitious visual effects to feel technically extraordinary |
+| `/clarify` | Improve UX copy, labels, and error messages |
+| `/adapt` | Make the UI responsive across breakpoints and devices |
+| `/optimize` | Performance and render optimization for the UI layer |
+| `/live` | Iterate on UI live in the browser |
+
 ## Commands
 
 Run from `artifacts/nextjs-app/`:
