@@ -24,7 +24,7 @@ export default function CategoryCard({ categoryId, name, countLabel, href }: Cat
       className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm"
       aria-label={`${name} — ${countLabel}`}
     >
-      <div className="flex flex-col items-center gap-4 p-6 bg-white rounded-sm border border-neutral-100 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+      <div className="flex flex-col items-center gap-4 p-6 bg-white rounded-sm border border-neutral-100 transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] group-active:scale-[0.98] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
         {/* 3D icon container */}
         <div
           className="w-16 h-16 flex items-center justify-center rounded-sm bg-[#f8f7f5] transition-transform duration-300 group-hover:scale-105 motion-reduce:group-hover:scale-100"

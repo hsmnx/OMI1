@@ -218,6 +218,88 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 4 — 2026-05-14)
+
+Full landing page redesign. Video hero, flat navigation, category-only homepage, 3D icon cards, and a full `/polish` pass using the Impeccable skill.
+
+### Skills Installed
+
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| `emil-design-eng` | `emilkowalski/skill` | Emil Kowalski's UI polish philosophy — micro-details, animation decisions, invisible craft |
+| `impeccable` | `pbakaus/impeccable` | 23-command design skill suite (polish, critique, audit, animate, etc.) |
+
+Both installed to `~/workspace/.agents/skills/`. See CLAUDE.md for full command reference.
+
+---
+
+### Updated — Security & Config
+
+| File | What Changed |
+|------|--------------|
+| `next.config.ts` | Added `media-src 'self' https://omi.mr` to the CSP header to allow the `<video>` element to load the OMI brand video from omi.mr |
+
+---
+
+### Created — New Components
+
+| File | Description |
+|------|-------------|
+| `src/components/sections/video-hero.tsx` | `'use client'`. Full-screen video background hero using `https://omi.mr/assets/images/resource/OMI%20finalmp4.mp4`. Video: `autoPlay muted loop playsInline`, `absolute inset-0 object-cover`. Dark gradient overlay (`from-black/65 via-black/50 to-black/40`) for text readability. Motion fade-in on content (`opacity/y`, 0.6s easeOut). On video load error, falls back to solid `#171717` background. CTA buttons (white solid → `/produits`, white bordered → `/a-propos`) both have `focus-visible:ring-2` for keyboard accessibility. `useReducedMotion()` used throughout. |
+| `src/components/ui/category-card.tsx` | Presentational UI primitive. Props: `categoryId`, `name`, `countLabel`, `href`. Maps 7 category IDs to emoji icons with CSS 3D treatment: `perspective: 300px` on container + `transform: rotateX(5deg)` + `filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15))` on the emoji span — giving genuine depth without installing any icon package. Card hover: `translateY(-4px)` + `box-shadow`. Tap: `group-active:scale-[0.98]`. Full `motion-reduce` support via Tailwind variants. `focus-visible:ring-2` on the Link wrapper. |
+| `src/components/sections/categories-grid.tsx` | `'use client'`. Renders all 7 categories in a `2→3→4` responsive grid. Product count per category computed via `useMemo` from the static `products` array. Count label uses ICU plural formatting via `t('productsCount', { count })`. Staggered `whileInView` animations: `index * 0.07s` delay, `once: true`. Section uses `aria-labelledby` connected to the `h2`. |
+
+---
+
+### Updated — Existing Components & Pages
+
+| File | What Changed |
+|------|--------------|
+| `src/components/layout/header.tsx` | **Full redesign.** Removed: `categories` import, `productsOpen` state, the entire dropdown `<AnimatePresence>` block, the mobile sub-category list. Added: Home link to `navLinks` (4 flat links total: Home · Produits · À propos · Contact). Added `isActive()` helper using `usePathname` — sets `aria-current="page"` and bold text highlight on the active link, both in desktop nav and mobile drawer. Focus rings added to desktop nav links. Mobile drawer unchanged in behaviour. |
+| `src/app/[locale]/page.tsx` | **Homepage restructured.** Removed: `HeroSection`, featured products section (6 product grid), `featuredProducts` translation namespace, `products`/`getCategoryById`/`ProductCard` imports. Added: `VideoHero`, `CategoriesGrid`. Section order: VideoHero → MarqueeBanner → CategoriesGrid → WhyOMI → About snippet → Contact CTA. JSON-LD org schema and all other sections unchanged. |
+| `messages/fr.json` | Added to `categories` namespace: `sectionTitle`, `sectionSubtitle`, `productsCount` (ICU plural: `one {# produit} other {# produits}`). Removed dead `featuredProducts` namespace (3 keys). |
+| `messages/ar.json` | Added to `categories` namespace: `sectionTitle`, `sectionSubtitle`, `productsCount` (full Arabic 6-form ICU plural). Removed dead `featuredProducts` namespace. |
+
+---
+
+### Deleted
+
+| File | Reason |
+|------|--------|
+| `src/components/sections/hero.tsx` | Replaced by `video-hero.tsx`. Deleted per CLAUDE.md: no dead code. |
+
+---
+
+### `/polish` Pass (Impeccable)
+
+A full systematic polish pass was run after implementation, covering all items from the Impeccable `polish.md` checklist:
+
+| Area | Finding & Fix |
+|------|--------------|
+| **Focus states** | Video hero CTA buttons lacked visible focus rings on dark background. Fixed: primary button gets `ring-neutral-900`, secondary gets `ring-white ring-offset-black/30`. |
+| **Active link state** | Header had no current-page indicator. Fixed: `isActive()` helper sets `aria-current="page"` + `font-semibold text-neutral-900` on the active link in both desktop and mobile nav. |
+| **Tap feedback** | Category cards had no active state. Fixed: `group-active:scale-[0.98]` on the inner card div. |
+| **Accessibility** | Categories section heading not connected to the section landmark. Fixed: `id="categories-heading"` on `h2`, `aria-labelledby="categories-heading"` on `<section>`. |
+| **RTL** | All new components use `items-start`/`text-center` which are locale-neutral. No logical property violations found. |
+| **Touch targets** | Category cards render well above 44×44px minimum — card content alone is 160px+. CTA buttons: `py-3` (12px × 2) + 20px line height = ~44px. Pass. |
+| **Reduced motion** | All animations guarded with `useReducedMotion()` (Motion) or `motion-reduce:` Tailwind variants. |
+| **Dead code** | None remaining. All removed imports and files confirmed. |
+| **TypeScript** | 0 errors post-polish. |
+
+---
+
+### QA Results (Session 4)
+
+All commands run from `artifacts/nextjs-app/`:
+
+| Command | Result |
+|---------|--------|
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm lint` | ✅ 0 warnings or errors |
+| `pnpm build` | ✅ 49/49 pages generated |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |

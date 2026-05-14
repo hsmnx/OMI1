@@ -21,7 +21,7 @@ export default function CategoriesGrid() {
   }, []);
 
   return (
-    <section className="py-20 px-4 bg-[#f8f7f5]">
+    <section aria-labelledby="categories-heading" className="py-20 px-4 bg-[#f8f7f5]">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -31,7 +31,7 @@ export default function CategoriesGrid() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-semibold text-neutral-900 mb-3">
+          <h2 id="categories-heading" className="text-3xl font-semibold text-neutral-900 mb-3">
             {t('sectionTitle')}
           </h2>
           <p className="text-neutral-500 max-w-xl mx-auto">

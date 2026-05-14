@@ -26,6 +26,11 @@ export default function Header() {
     { href: '/contact' as const, label: t('contact') },
   ];
 
+  function isActive(href: string) {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -38,7 +43,12 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-600">
           {navLinks.map(({ href, label }) => (
-            <Link key={href} href={href} className="hover:text-neutral-900 transition-colors duration-150">
+            <Link
+              key={href}
+              href={href}
+              aria-current={isActive(href) ? 'page' : undefined}
+              className={`transition-colors duration-150 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm ${isActive(href) ? 'text-neutral-900 font-semibold' : ''}`}
+            >
               {label}
             </Link>
           ))}
@@ -87,7 +97,8 @@ export default function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className="px-3 py-2.5 rounded-sm text-neutral-700 hover:bg-neutral-50"
+                  aria-current={isActive(href) ? 'page' : undefined}
+                  className={`px-3 py-2.5 rounded-sm hover:bg-neutral-50 transition-colors ${isActive(href) ? 'text-neutral-900 font-semibold bg-neutral-50' : 'text-neutral-700'}`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {label}

@@ -65,13 +65,13 @@ export default function VideoHero() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/produits"
-              className="inline-flex items-center justify-center bg-white text-neutral-900 px-8 py-3 text-sm font-semibold rounded-sm hover:bg-neutral-100 transition-colors duration-150"
+              className="inline-flex items-center justify-center bg-white text-neutral-900 px-8 py-3 text-sm font-semibold rounded-sm hover:bg-neutral-100 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
             >
               {t('ctaPrimary')}
             </Link>
             <Link
               href="/a-propos"
-              className="inline-flex items-center justify-center border border-white/60 text-white px-8 py-3 text-sm font-semibold rounded-sm hover:bg-white/10 transition-colors duration-150"
+              className="inline-flex items-center justify-center border border-white/60 text-white px-8 py-3 text-sm font-semibold rounded-sm hover:bg-white/10 transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
             >
               {t('ctaSecondary')}
             </Link>
