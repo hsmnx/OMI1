@@ -14,6 +14,16 @@ const cspHeader = [
 ].join('; ');
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/fr',
+        permanent: false,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {

@@ -5,12 +5,13 @@ type AppRoutes = "/[locale]"
 type AppRouteHandlerRoutes = "/api/example"
 type PageRoutes = never
 type LayoutRoutes = "/[locale]"
-type RedirectRoutes = never
+type RedirectRoutes = "/"
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
 
 interface ParamMap {
+  "/": {}
   "/[locale]": { "locale": string; }
   "/api/example": {}
 }
