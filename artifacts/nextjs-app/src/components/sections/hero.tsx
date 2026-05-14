@@ -2,17 +2,18 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from '@/i18n/navigation';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
+  const shouldReduce = useReducedMotion();
 
   return (
     <section className="bg-[#f8f7f5] min-h-[85vh] flex items-center px-4 py-16">
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
+          initial={shouldReduce ? false : { opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="flex flex-col items-start gap-6"
@@ -43,7 +44,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={shouldReduce ? false : { opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
           className="relative h-[500px] lg:h-[600px] rounded-sm overflow-hidden"

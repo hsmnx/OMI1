@@ -12,6 +12,11 @@ const ipTimestamps = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  for (const [key, timestamps] of ipTimestamps) {
+    if (timestamps.every((t) => now - t >= 60_000)) {
+      ipTimestamps.delete(key);
+    }
+  }
   const hits = (ipTimestamps.get(ip) ?? []).filter((t) => now - t < 60_000);
   hits.push(now);
   ipTimestamps.set(ip, hits);

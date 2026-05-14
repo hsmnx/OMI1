@@ -3,9 +3,11 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 const cspHeader = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https://omi.mr",
   "font-src 'self' https://fonts.gstatic.com",
@@ -16,16 +18,6 @@ const cspHeader = [
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'omi.mr' }],
-  },
-
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/fr',
-        permanent: false,
-      },
-    ];
   },
 
   async headers() {

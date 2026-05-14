@@ -110,10 +110,10 @@ export default function Header() {
         {menuOpen && (
           <motion.div
             id="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             className="md:hidden overflow-hidden border-t border-neutral-100 bg-white"
           >
             <nav className="px-4 py-4 flex flex-col gap-1 text-sm font-medium">

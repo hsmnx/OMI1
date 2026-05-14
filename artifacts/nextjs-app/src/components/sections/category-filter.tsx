@@ -28,7 +28,7 @@ export default function CategoryFilter({ categories, locale }: Props) {
     router.push(qs ? `${pathname}?${qs}` : pathname);
   }
 
-  const allLabel = locale === 'ar' ? 'الكل' : t('products.filterAll');
+  const allLabel = t('products.filterAll');
 
   return (
     <div className="flex flex-wrap gap-2" role="group" aria-label={t('products.filterBy')}>

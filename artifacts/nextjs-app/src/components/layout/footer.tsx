@@ -1,11 +1,12 @@
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { CONTACT, SOCIAL } from '@/data/siteContent';
 
-export default async function Footer() {
-  const locale = await getLocale();
-  const t = await getTranslations('footer');
-  const tn = await getTranslations('nav');
+type Props = { locale: string };
+
+export default async function Footer({ locale }: Props) {
+  const t = await getTranslations({ locale, namespace: 'footer' });
+  const tn = await getTranslations({ locale, namespace: 'nav' });
   const year = new Date().getFullYear();
 
   const navLinks = [

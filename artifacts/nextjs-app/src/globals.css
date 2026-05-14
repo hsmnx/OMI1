@@ -34,6 +34,6 @@
   }
 
   [dir='rtl'] body {
-    font-family: 'Tajawal', system-ui, sans-serif;
+    font-family: var(--font-arabic), system-ui, sans-serif;
   }
 }
