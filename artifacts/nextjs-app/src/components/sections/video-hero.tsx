@@ -22,7 +22,8 @@ export default function VideoHero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster="https://omi.mr/assets/images/banner/banner-img-2.png"
           className="absolute inset-0 w-full h-full object-cover -z-10"
           aria-hidden="true"
           onError={() => setVideoError(true)}

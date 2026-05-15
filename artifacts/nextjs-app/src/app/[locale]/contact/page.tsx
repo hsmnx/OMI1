@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { CONTACT } from '@/data/siteContent';
-import ContactForm from '@/components/sections/contact-form';
-import AnimatedSection from '@/components/ui/animated-section';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -41,6 +40,7 @@ const MapPinIcon = () => (
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
+  const t_nav = await getTranslations({ locale, namespace: 'nav' });
 
   const address = locale === 'ar'
     ? `${CONTACT.addressAr}، ${CONTACT.cityAr}`
@@ -50,51 +50,58 @@ export default async function ContactPage({ params }: Props) {
     <div>
       {/* Page hero */}
       <section className="bg-[#f8f7f5] py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <AnimatedSection>
+        <div className="max-w-2xl mx-auto">
+          <div className="omi-animate">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-700 transition-colors mb-4"
+            >
+              <svg className="w-3 h-3 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+              {t_nav('home')}
+            </Link>
             <h1 className="text-4xl font-bold text-neutral-900 mb-2">{t('headline')}</h1>
             <p className="text-neutral-500">{t('subheadline')}</p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
+      {/* Contact info — single centered column */}
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
-          {/* Contact info */}
-          <AnimatedSection delay={0}>
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-1.5">
-                  <PhoneIcon />
-                  <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('phoneLabel')}</span>
-                </div>
-                <a href={CONTACT.phoneHref} className="text-lg font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-                  {CONTACT.phone}
-                </a>
+        <div className="max-w-2xl mx-auto omi-animate">
+          <div className="flex flex-col gap-10">
+            {/* Phone */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-1.5">
+                <PhoneIcon />
+                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('phoneLabel')}</span>
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-1.5">
-                  <EmailIcon />
-                  <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('emailLabel')}</span>
-                </div>
-                <a href={CONTACT.emailHref} className="text-lg font-medium text-neutral-900 hover:text-neutral-600 transition-colors break-all">
-                  {CONTACT.email}
-                </a>
-              </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-1.5">
-                  <MapPinIcon />
-                  <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('addressLabel')}</span>
-                </div>
-                <address className="not-italic text-neutral-700 leading-relaxed">{address}</address>
-              </div>
+              <a href={CONTACT.phoneHref} className="text-2xl font-semibold text-neutral-900 hover:text-neutral-600 transition-colors">
+                {CONTACT.phone}
+              </a>
             </div>
-          </AnimatedSection>
 
-          {/* Form */}
-          <AnimatedSection delay={0.1}>
-            <ContactForm />
-          </AnimatedSection>
+            {/* Email */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-1.5">
+                <EmailIcon />
+                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('emailLabel')}</span>
+              </div>
+              <a href={CONTACT.emailHref} className="text-2xl font-semibold text-neutral-900 hover:text-neutral-600 transition-colors break-all">
+                {CONTACT.email}
+              </a>
+            </div>
+
+            {/* Address */}
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-1.5">
+                <MapPinIcon />
+                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('addressLabel')}</span>
+              </div>
+              <address className="not-italic text-xl font-medium text-neutral-700 leading-relaxed">{address}</address>
+            </div>
+          </div>
         </div>
       </section>
     </div>

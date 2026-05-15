@@ -4,7 +4,6 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { CONTACT } from '@/data/siteContent';
-import AnimatedSection from '@/components/ui/animated-section';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -23,6 +22,7 @@ export function generateStaticParams() {
 export default async function AProposPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'about' });
+  const t_nav = await getTranslations({ locale, namespace: 'nav' });
 
   const orgSchema = {
     '@context': 'https://schema.org',
@@ -44,46 +44,79 @@ export default async function AProposPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
 
-      {/* Hero */}
-      <section className="bg-[#f8f7f5] py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <AnimatedSection>
-            <h1 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">{t('headline')}</h1>
-            <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">{t('body')}</p>
-          </AnimatedSection>
+      {/* Section 1 — Dark hero with background image */}
+      <section className="relative bg-neutral-900 py-24 px-4 overflow-hidden">
+        <Image
+          src="https://omi.mr/assets/images/banner/banner-img-2.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-neutral-900/50" aria-hidden="true" />
+        <div className="relative max-w-4xl mx-auto">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-white/60 hover:text-white/90 transition-colors mb-6"
+          >
+            <svg className="w-3 h-3 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            {t_nav('home')}
+          </Link>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">{t('headline')}</h1>
+          <p className="text-lg text-white/70 leading-relaxed max-w-2xl">{t('body')}</p>
         </div>
       </section>
 
-      {/* Image + mission */}
+      {/* Section 2 — Stats bar */}
+      <section className="bg-white border-b border-neutral-100 py-12 px-4">
+        <div className="max-w-4xl mx-auto grid grid-cols-3 gap-8 text-center">
+          <div>
+            <p className="text-4xl font-bold text-neutral-900">18</p>
+            <p className="text-sm text-neutral-500 mt-1">{t('stats1Label')}</p>
+          </div>
+          <div>
+            <p className="text-4xl font-bold text-neutral-900">7</p>
+            <p className="text-sm text-neutral-500 mt-1">{t('stats2Label')}</p>
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-neutral-900">{locale === 'ar' ? 'نواكشوط' : 'Nouakchott'}</p>
+            <p className="text-sm text-neutral-500 mt-1">{t('stats3Label')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 — Image + story */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection>
+          <div className="omi-animate">
             <div className="relative aspect-[4/3] rounded-sm overflow-hidden bg-neutral-100">
               <Image
                 src="https://omi.mr/assets/images/resource/about-1.jpg"
                 alt="OMI usine Mauritanie"
                 fill
-                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
-          </AnimatedSection>
-          <AnimatedSection delay={0.1}>
-            <div className="flex flex-col gap-6">
+          </div>
+          <div className="omi-animate-d1">
+            <div className="flex flex-col gap-6 border-s-4 border-neutral-100 ps-6">
               <h2 className="text-2xl font-semibold text-neutral-900">{t('qualityTitle')}</h2>
               <p className="text-neutral-500 leading-relaxed">{t('qualityBody')}</p>
               <h2 className="text-2xl font-semibold text-neutral-900">{t('locationTitle')}</h2>
               <p className="text-neutral-500 leading-relaxed">{t('locationBody')}</p>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Mission */}
+      {/* Section 4 — Mission CTA */}
       <section className="py-16 px-4 bg-[#f8f7f5]">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
-          <AnimatedSection>
+          <div className="omi-animate">
             <p className="text-xl text-neutral-700 leading-relaxed font-medium">{t('mission')}</p>
             <Link
               href="/produits"
@@ -91,7 +124,7 @@ export default async function AProposPage({ params }: Props) {
             >
               {t('discoverProducts')}
             </Link>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

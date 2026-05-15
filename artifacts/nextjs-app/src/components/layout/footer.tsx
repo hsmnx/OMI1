@@ -26,7 +26,7 @@ export default async function Footer({ locale }: Props) {
       <div className="max-w-6xl mx-auto px-4 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1 — Brand */}
         <div className="flex flex-col gap-4">
-          <Image src="/logo.png" alt={tn('brandLogoAlt')} width={60} height={44} className="h-9 w-auto brightness-0 invert" />
+          <Image src="/logo.png" alt={tn('brandLogoAlt')} width={80} height={60} className="h-12 w-auto brightness-0 invert mb-2" />
           <p className="text-sm leading-relaxed text-neutral-400">{t('aboutBody')}</p>
         </div>
 
@@ -89,7 +89,10 @@ export default async function Footer({ locale }: Props) {
       {/* Copyright bar */}
       <div className="border-t border-neutral-800">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-500">
-          <span>{t('copyright', { year })}</span>
+          <div className="flex items-center gap-3">
+            <Image src="/logo.png" alt={tn('brandLogoAlt')} width={40} height={29} className="h-6 w-auto brightness-0 invert opacity-50" />
+            <span>{t('copyright', { year })}</span>
+          </div>
           <span>{t('rights')}</span>
         </div>
       </div>

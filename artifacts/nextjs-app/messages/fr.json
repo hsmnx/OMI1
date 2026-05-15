@@ -99,7 +99,10 @@
     "qualityBody": "OMI se distingue par son engagement envers les normes de qualité et de sécurité les plus élevées, garantissant que nos produits répondent aux attentes de nos clients.",
     "locationTitle": "Fabriqué en Mauritanie",
     "locationBody": "Nos produits sont fabriqués dans notre usine à la Zone industrielle Dar Naim, Nouakchott, Mauritanie.",
-    "discoverProducts": "Découvrir nos produits"
+    "discoverProducts": "Découvrir nos produits",
+    "stats1Label": "Produits",
+    "stats2Label": "Catégories",
+    "stats3Label": "Mauritanie"
   },
   "contact": {
     "pageTitle": "Contactez-nous",

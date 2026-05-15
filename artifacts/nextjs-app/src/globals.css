@@ -37,3 +37,29 @@
     font-family: var(--font-arabic), system-ui, sans-serif;
   }
 }
+
+@keyframes omi-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.omi-animate {
+  animation: omi-fade-in-up 0.5s ease-out both;
+}
+
+.omi-animate-d1 {
+  animation: omi-fade-in-up 0.5s ease-out 0.1s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .omi-animate,
+  .omi-animate-d1 {
+    animation: none;
+  }
+}
