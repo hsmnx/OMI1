@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import ProductGrid from '@/components/sections/product-grid';
+import AnimatedSection from '@/components/ui/animated-section';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -40,8 +41,10 @@ export default async function ProduitsPage({ params }: Props) {
 
       <section className="bg-[#f8f7f5] py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-2">{t('pageTitle')}</h1>
-          <p className="text-neutral-500">{t('pageSubtitle')}</p>
+          <AnimatedSection>
+            <h1 className="text-4xl font-bold text-neutral-900 mb-2">{t('pageTitle')}</h1>
+            <p className="text-neutral-500">{t('pageSubtitle')}</p>
+          </AnimatedSection>
         </div>
       </section>
 

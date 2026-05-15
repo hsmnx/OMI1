@@ -34,10 +34,10 @@ export default function CategoryFilter({ categories, locale }: Props) {
     <div className="flex flex-wrap gap-2" role="group" aria-label={t('products.filterBy')}>
       <button
         onClick={() => select(null)}
-        className={`px-4 py-2 text-sm font-medium rounded-full border transition-colors ${
+        className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-150 cursor-pointer active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-1 ${
           !active
             ? 'bg-neutral-900 text-white border-neutral-900'
-            : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-500'
+            : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-500 hover:bg-neutral-50'
         }`}
       >
         {allLabel}
@@ -49,10 +49,10 @@ export default function CategoryFilter({ categories, locale }: Props) {
           <button
             key={cat.id}
             onClick={() => select(cat.id)}
-            className={`px-4 py-2 text-sm font-medium rounded-full border transition-colors ${
+            className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-150 cursor-pointer active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-1 ${
               isActive
                 ? 'bg-neutral-900 text-white border-neutral-900'
-                : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-500'
+                : 'bg-white text-neutral-700 border-neutral-300 hover:border-neutral-500 hover:bg-neutral-50'
             }`}
           >
             {name}

@@ -14,10 +14,10 @@ export default function ProductCard({ product, locale, categoryName }: Props) {
   return (
     <Link
       href={`/produits/${product.slug}`}
-      className="group block"
+      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 rounded-sm"
     >
       <div
-        className="relative aspect-[3/4] rounded-sm overflow-hidden mb-3"
+        className="relative aspect-[3/4] rounded-sm overflow-hidden mb-3 transition-all duration-300 ease-out group-hover:-translate-y-1.5 group-hover:shadow-xl"
         style={{ backgroundColor: product.bg }}
       >
         <Image

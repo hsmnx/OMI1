@@ -46,8 +46,9 @@ export default function Header() {
             <Link
               key={href}
               href={href}
+              prefetch
               aria-current={isActive(href) ? 'page' : undefined}
-              className={`transition-colors duration-150 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm ${isActive(href) ? 'text-neutral-900 font-semibold' : ''}`}
+              className={`transition-colors duration-150 hover:text-neutral-900 active:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm ${isActive(href) ? 'text-neutral-900 font-semibold' : ''}`}
             >
               {label}
             </Link>
