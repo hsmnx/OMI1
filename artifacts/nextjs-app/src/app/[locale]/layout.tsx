@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import NavigationProgress from '@/components/layout/navigation-progress';
 import '@/globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
@@ -73,8 +72,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <NavigationProgress />
-          <Header />
+<Header />
           <main>{children}</main>
           <Footer locale={locale} />
         </NextIntlClientProvider>

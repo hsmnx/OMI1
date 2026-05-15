@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'motion/react';
 import { Link } from '@/i18n/navigation';
@@ -9,6 +9,26 @@ export default function VideoHero() {
   const t = useTranslations('hero');
   const shouldReduce = useReducedMotion();
   const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.load();
+    const tryPlay = () => video.play().catch(() => {});
+    tryPlay();
+
+    video.addEventListener('stalled', tryPlay);
+    video.addEventListener('suspend', tryPlay);
+    video.addEventListener('ended', tryPlay);
+
+    return () => {
+      video.removeEventListener('stalled', tryPlay);
+      video.removeEventListener('suspend', tryPlay);
+      video.removeEventListener('ended', tryPlay);
+    };
+  }, []);
 
   return (
     <section className="relative overflow-hidden min-h-[100svh] flex items-center px-4 py-24">
@@ -18,11 +38,12 @@ export default function VideoHero() {
       {/* Video — same z-index layer, DOM order paints it on top of the fallback div */}
       {!videoError && (
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="https://omi.mr/assets/images/banner/banner-img-2.png"
           className="absolute inset-0 w-full h-full object-cover -z-10"
           aria-hidden="true"

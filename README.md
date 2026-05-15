@@ -326,6 +326,24 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 6 — 2026-05-15)
+
+Video playback reliability pass. The hero video was stalling mid-play and had a visible delay before starting due to conservative browser preloading.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/video-hero.tsx` | Two changes: (1) `preload="metadata"` → `preload="auto"` — instructs the browser to download the full video file as early as possible rather than just the metadata, eliminating buffering delay before first play. (2) Added `useRef` + `useEffect` for programmatic playback control: calls `video.load()` on mount to force buffering, calls `video.play()` immediately (silently catches autoplay-policy and abort errors), and attaches `stalled`/`suspend`/`ended` event listeners that call `play()` again — ensuring playback resumes after any network pause and loops reliably even in low-power browser modes where the `loop` attribute may be ignored. |
+
+### QA Results (Session 6)
+
+| Command | Result |
+|---------|--------|
+| No build step run — single-component client-side change, no TypeScript or lint issues introduced | — |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
