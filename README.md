@@ -300,6 +300,32 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 5 — 2026-05-14)
+
+Performance pass. Surgical fixes to eliminate the video loading delay, reduce image re-fetch overhead, and bring all animated components into CLAUDE.md compliance.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/app/[locale]/layout.tsx` | Added `<head>` with `<link rel="preconnect" href="https://omi.mr">` and `<link rel="dns-prefetch" href="https://omi.mr">`. Warms up the TCP/TLS connection to `omi.mr` before any resource is requested, eliminating the cold-start DNS round-trip (~200–500ms) for the video stream. |
+| `src/components/sections/video-hero.tsx` | Three changes: (1) Added a permanent `<div className="absolute inset-0 bg-[#171717] -z-10">` as the first child — always-visible dark background before the video buffers and as permanent fallback on video error. (2) Added `preload="auto"` to `<video>` — browser starts downloading the video immediately. (3) Added `useReducedMotion()` guard on `motion.div` — CLAUDE.md compliance: animations skip when user prefers reduced motion. |
+| `next.config.ts` | Added `minimumCacheTTL: 86400` to `images` config. Next.js image optimizer now caches optimised product images for 24 h, preventing repeated server-to-`omi.mr` fetches on cold starts. |
+| `src/app/[locale]/a-propos/page.tsx` | Added `priority` prop to the factory hero image (`about-1.jpg`). Next.js injects a `<link rel="preload">` for it, fixing LCP on the `/a-propos` page. |
+| `src/components/sections/why-omi.tsx` | Added `useReducedMotion()` hook and conditional guard on all three `motion.div` blocks — CLAUDE.md compliance: *"Always wrap Motion animations in prefers-reduced-motion checks."* |
+
+### QA Results (Session 5)
+
+All commands run from `artifacts/nextjs-app/`:
+
+| Command | Result |
+|---------|--------|
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm lint` | ✅ 0 warnings or errors |
+| `pnpm build` | ✅ 49/49 pages generated |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
