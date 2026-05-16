@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm build",
-  "installCommand": "pnpm install",
-  "nodeVersion": "22"
+  "installCommand": "pnpm install --filter @workspace/nextjs-app",
+  "buildCommand": "pnpm build"
 }
