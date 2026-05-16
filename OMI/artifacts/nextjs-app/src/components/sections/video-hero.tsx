@@ -15,18 +15,13 @@ export default function VideoHero() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.load();
     const tryPlay = () => video.play().catch(() => {});
-    tryPlay();
 
+    tryPlay();
     video.addEventListener('stalled', tryPlay);
-    video.addEventListener('suspend', tryPlay);
-    video.addEventListener('ended', tryPlay);
 
     return () => {
       video.removeEventListener('stalled', tryPlay);
-      video.removeEventListener('suspend', tryPlay);
-      video.removeEventListener('ended', tryPlay);
     };
   }, []);
 
@@ -44,15 +39,12 @@ export default function VideoHero() {
           loop
           playsInline
           preload="auto"
-          poster="https://omi.mr/assets/images/banner/banner-img-2.png"
+          poster="/videos/hero-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover -z-10"
           aria-hidden="true"
           onError={() => setVideoError(true)}
         >
-          <source
-            src="https://omi.mr/assets/images/resource/OMI%20finalmp4.mp4"
-            type="video/mp4"
-          />
+          <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
       )}
 
