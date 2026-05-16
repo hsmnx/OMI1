@@ -40,7 +40,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation failed' }, { status: 400 });
 
   const { name, email, message } = result.data;
-  console.log('Contact form:', { name, email, message }); // TODO: replace with SMTP
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Contact form:', { name, email, message }); // dev only — replace with SMTP
+  }
 
   return NextResponse.json({ success: true });
 }
