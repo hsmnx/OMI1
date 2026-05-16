@@ -531,6 +531,30 @@ On portrait mobile (e.g. 390×844 px), `object-cover` must scale the 1920×1080 
 
 ---
 
+## Changes Made (Session 13 — 2026-05-16)
+
+Mobile product page fix: product image was overlapping text on scroll.
+
+### Root Cause
+
+On mobile (< 1024 px) the two-column grid collapses to one column — product image on top, details below. The image container had `sticky top-24 self-start` applied at all breakpoints, so on mobile the image stayed pinned to the viewport while the user scrolled down, sitting on top of the description and making it unreadable.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/app/[locale]/produits/[slug]/page.tsx` | `sticky top-24 self-start` → `lg:sticky lg:top-24 lg:self-start`. Sticky behaviour now only applies at the `lg` breakpoint where the two-column layout is active. On mobile the image scrolls normally and the text below it is always readable. |
+
+### QA Results (Session 13)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
