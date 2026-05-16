@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: Props) {
           <div className="grid lg:grid-cols-2 gap-12 mt-4">
             {/* Product image */}
             <div
-              className="relative aspect-[4/5] rounded-sm overflow-hidden sticky top-24 self-start"
+              className="relative aspect-square lg:aspect-[4/5] rounded-sm overflow-hidden lg:sticky lg:top-24 lg:self-start"
               style={{ backgroundColor: product.bg }}
             >
               <Image

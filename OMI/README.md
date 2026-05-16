@@ -531,6 +531,75 @@ On portrait mobile (e.g. 390×844 px), `object-cover` must scale the 1920×1080 
 
 ---
 
+## Changes Made (Session 13 — 2026-05-16)
+
+Mobile product page fix: product image was overlapping text on scroll.
+
+### Root Cause
+
+On mobile (< 1024 px) the two-column grid collapses to one column — product image on top, details below. The image container had `sticky top-24 self-start` applied at all breakpoints, so on mobile the image stayed pinned to the viewport while the user scrolled down, sitting on top of the description and making it unreadable.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/app/[locale]/produits/[slug]/page.tsx` | `sticky top-24 self-start` → `lg:sticky lg:top-24 lg:self-start`. Sticky behaviour now only applies at the `lg` breakpoint where the two-column layout is active. On mobile the image scrolls normally and the text below it is always readable. |
+
+### QA Results (Session 13)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
+## Changes Made (Session 14 — 2026-05-16)
+
+Mobile hero text overlap fix + `/polish` pass.
+
+### Root Cause
+
+Session 12 switched the hero video to `object-contain md:object-cover` so the full 16:9 video was visible on portrait mobile. But all text (badge, h1, subheadline, CTAs) remained in a single overlaid block centered over the full-screen section — visually overlapping the video.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/video-hero.tsx` | **Mobile layout restructure.** Section changed from `min-h-[100svh] flex items-center` to `flex flex-col md:block md:min-h-[100svh]`. Video changed from `absolute inset-0 object-contain md:object-cover` to `w-full aspect-video object-contain md:absolute md:inset-0 md:h-full md:aspect-auto md:object-cover md:-z-10` — on mobile the video is in document flow at natural 16:9 aspect ratio; on desktop it reverts to fullscreen absolute background. Content split into three conditional blocks: (1) mobile-only top block `md:hidden` with badge + h1 above the video; (2) mobile-only bottom block `md:hidden` with subheadline + CTAs below the video; (3) desktop-only overlay block `hidden md:flex md:absolute md:inset-0` with all content and motion animation unchanged. Gradient overlay changed to `hidden md:block` — not needed on mobile since text is no longer on top of the video. **Polish pass:** Added `active:bg-neutral-200 active:scale-[0.98]` to primary CTA and `active:bg-white/20 active:scale-[0.98]` to secondary CTA (both mobile and desktop instances); changed `transition-colors` → `transition` so the scale animates at the same 150ms. |
+
+### Skills Installed
+
+| Skill | Source | Purpose |
+|-------|--------|---------|
+| `impeccable` | `pbakaus/impeccable` | Re-installed (was missing from workspace). Used for `/polish` pass. |
+
+### `/polish` Pass Results
+
+| Area | Finding & Fix |
+|------|--------------|
+| **Mobile layout** | Text overlapping video — root fix: restructured to stacked layout (above-video text / video / below-video text) |
+| **Active states** | CTA buttons had hover + focus but no tap feedback. Fixed: `active:scale-[0.98]` + `active:bg-*` on all 4 button instances |
+| **Reduced motion** | Mobile layout has no motion (inherently safe); desktop motion.div retains `useReducedMotion()` guard ✓ |
+| **Touch targets** | CTAs: `py-3` + `text-sm` line height ≈ 44px ✓ |
+| **RTL** | Mobile content inherits `dir="rtl"` from `<html>`; layout is consistent with desktop RTL behavior ✓ |
+| **Contrast** | White / white/80 text on `#171717` background — very high contrast ✓ |
+| **Focus states** | `focus-visible:ring-2` on all CTAs in all blocks ✓ |
+| **Dead code** | None — the `motion`/`useReducedMotion` imports are still used in the desktop block ✓ |
+
+### QA Results (Session 14)
+
+All commands run from `artifacts/nextjs-app/`:
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |

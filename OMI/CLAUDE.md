@@ -243,6 +243,15 @@ CONTACT_SMTP_PASS=
 CONTACT_TO_EMAIL=commercial@omi.mr
 ```
 
+## Commit and Push Rules
+
+After every change — no exceptions:
+1. Stage the relevant files
+2. Commit with a clear message following the `type: description` convention
+3. Push to `origin main` immediately
+
+Do not wait for the user to ask. Every session ends with all changes committed and pushed.
+
 ## Final Response Rules
 
 Every Claude Code session working on this project must end with:
