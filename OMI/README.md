@@ -378,6 +378,50 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 8 — 2026-05-16)
+
+Vercel deployment setup. The project was moved from Replit to GitHub and needed to be configured for Vercel hosting.
+
+### Root Causes Diagnosed and Fixed
+
+| Issue | Root Cause | Fix |
+|-------|-----------|-----|
+| "No framework detected" in Vercel | `vercel.json` contained `nodeVersion: "22"` — not a recognized Vercel config field; also Vercel was connected to the wrong GitHub repo (`omimr1` instead of `OMI1`) | Removed invalid field; reconnected Vercel to correct repo |
+| 404 on deployed domain | Vercel was cloning `hsmnx/omimr1` (empty/different repo) while all code was in `hsmnx/OMI1`; Root Directory was also unset | Reconnected Vercel project to `hsmnx/OMI1`; set Root Directory to `OMI/artifacts/nextjs-app` |
+| Workspace install risk | `pnpm install` from workspace root would install all workspace packages including `api-server` (Drizzle + PostgreSQL) and `mockup-sandbox` (Vite), which could fail on Vercel's build environment | Scoped install to `--filter @workspace/nextjs-app` |
+
+### Created
+
+| File | Description |
+|------|-------------|
+| `artifacts/nextjs-app/vercel.json` | Vercel deployment config: declares `framework: nextjs`, scoped `installCommand` (`pnpm install --filter @workspace/nextjs-app`), and `buildCommand` (`pnpm build`). No invalid fields. |
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `artifacts/nextjs-app/package.json` | Added `"engines": { "node": ">=22.0.0" }` — the correct Vercel-supported way to declare the Node.js version (replaces the invalid `nodeVersion` field that was in `vercel.json`). |
+
+### Vercel Project Configuration (Dashboard)
+
+| Setting | Value |
+|---|---|
+| GitHub repo | `hsmnx/OMI1` |
+| Root Directory | `OMI/artifacts/nextjs-app` |
+| Framework Preset | Next.js (auto-detected) |
+| Build Command | *(from vercel.json)* |
+| Install Command | *(from vercel.json)* |
+| Output Directory | *(Next.js default `.next`)* |
+
+### QA Results (Session 8)
+
+| Command | Result |
+|---------|--------|
+| `git push origin main` | ✅ Pushed successfully |
+| Vercel build | ✅ Framework detected as Next.js, 49 routes generated |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |

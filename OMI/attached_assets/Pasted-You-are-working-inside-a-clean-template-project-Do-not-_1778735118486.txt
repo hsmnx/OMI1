@@ -1,0 +1,92 @@
+You are working inside a clean template project.
+
+Do not build the real website yet.
+Do not mention any specific brand/app/project name.
+Do not add real business content.
+Do not create database tables or database columns.
+Do not add authentication.
+Do not add dashboard features.
+Do not add cart, checkout, payment, or user accounts.
+
+Your job is only to prepare the technical foundation and create a small working example using the stack we will use later.
+
+Use this stack:
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui where useful
+- Motion for React for smooth UI animations
+- next-intl for French/Arabic localization
+- Zod for validation
+- Minimal Next.js Route Handlers only for backend examples
+- pnpm as the package manager
+
+Set up and configure the project so it is ready for a future production website with:
+
+- bilingual routing
+- French LTR support
+- Arabic RTL support
+- clean component structure
+- reusable layout components
+- basic SEO metadata setup
+- basic security headers where possible
+- image optimization readiness
+- responsive design readiness
+- accessible UI defaults
+- clean folder structure
+- lint/typecheck/build workflow
+
+Create only a simple example to prove the setup works.
+
+The example should include:
+
+1. A basic homepage using clean placeholder content.
+2. A reusable layout with header and footer.
+3. A language switcher example for French and Arabic.
+4. RTL working correctly for Arabic.
+5. A small card/grid section using placeholder items.
+6. One simple shadcn/ui button or card example if shadcn is installed.
+7. One subtle Motion animation example.
+8. One simple API route example using Zod validation, but no database.
+9. Basic metadata configuration.
+10. Security headers/config if supported by the framework setup.
+
+Important rules:
+
+- Keep everything generic.
+- Do not hardcode future brand content.
+- Do not create unnecessary files.
+- Do not create random demo pages.
+- Do not add unnecessary packages.
+- Do not add a database.
+- Do not add ORM.
+- Do not add auth.
+- Do not add environment secrets.
+- Do not create unfinished TODO-heavy code.
+- Keep the structure clean and easy to replace later with the real frontend/design.
+
+Suggested structure if compatible:
+
+- src/app/[locale]/page.tsx
+- src/app/[locale]/layout.tsx
+- src/components/layout/header.tsx
+- src/components/layout/footer.tsx
+- src/components/ui/
+- src/components/sections/
+- src/i18n/
+- src/lib/
+- src/types/
+
+After setup, run:
+
+- pnpm lint
+- pnpm typecheck if configured
+- pnpm build
+
+At the end, summarize:
+1. Packages installed.
+2. Files/configs created or updated.
+3. Example pages/components created.
+4. Commands run and whether they passed.
+5. Anything that still needs to be configured later.
