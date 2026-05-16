@@ -40,7 +40,7 @@ export default function VideoHero() {
           playsInline
           preload="auto"
           poster="/videos/hero-poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover -z-10"
+          className="absolute inset-0 w-full h-full object-contain md:object-cover -z-10"
           aria-hidden="true"
           onError={() => setVideoError(true)}
         >

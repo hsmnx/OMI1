@@ -422,12 +422,99 @@ Vercel deployment setup. The project was moved from Replit to GitHub and needed 
 
 ---
 
+## Changes Made (Session 9 — 2026-05-16)
+
+Hero video performance fix. The landing page video was frozen on mobile and stalling on desktop.
+
+### Root Causes Diagnosed and Fixed
+
+| Issue | Root Cause | Fix |
+|-------|-----------|-----|
+| Mobile video frozen on poster image | Video was 136 MB served from `omi.mr` (no CDN); mobile browsers throttle/ignore `preload="auto"` for large external files — video never buffered enough to start | Compressed to 4.5 MB self-hosted in `public/videos/` — served from Vercel's global edge CDN |
+| Desktop video stalling mid-play | 136 MB file on a slow shared server; download couldn't keep up with playback | Same fix — self-hosted, 97% smaller |
+| `video.load()` resetting buffer | Called on mount via `useEffect`; browser had already started buffering via `preload="auto"` before React hydrated — `load()` discarded that work | Removed `video.load()` call |
+| iOS infinite retry loop | `suspend` event listener called `play()` — iOS Safari fires `suspend` intentionally to save data; retrying `play()` prevented any buffering | Removed `suspend` event listener |
+| `ended` listener redundant | `loop` attribute already handles looping natively; having both caused a brief black flash on loop | Removed `ended` listener |
+
+### Created
+
+| File | Description |
+|------|-------------|
+| `artifacts/nextjs-app/public/videos/hero.mp4` | Self-hosted hero video — compressed from 4K source to 1080p H.264 CRF 26, `-movflags +faststart`, no audio track. 4.5 MB. |
+| `artifacts/nextjs-app/public/videos/hero-poster.jpg` | Local poster frame extracted from the compressed video (5.8 KB). Replaces external `omi.mr` poster. |
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/video-hero.tsx` | Video `src` → `/videos/hero.mp4`; poster → `/videos/hero-poster.jpg`; fixed `useEffect` (removed `video.load()`, `suspend` listener, `ended` listener — kept only `stalled` for genuine network pauses) |
+| `next.config.ts` | CSP `media-src 'self' https://omi.mr` → `media-src 'self'` (video no longer external) |
+| `src/app/[locale]/layout.tsx` | Removed stale `<link rel="preconnect">` and `dns-prefetch` hints for `omi.mr` (video is now self-hosted; product images are proxied server-side through `/_next/image`) |
+
+### QA Results (Session 9)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
+## Changes Made (Session 10 — 2026-05-16)
+
+Hero video quality improvement. The Session 9 compression was too aggressive (720p / 514 kbps), causing visible blockiness on desktop.
+
+### Root Cause
+
+Original video is 4K (3840×2160) at 36,933 kbps. Session 9 downscaled to 720p at CRF 30 (514 kbps) — a resolution and bitrate drop severe enough to produce visible block artifacts, even behind the dark overlay.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `public/videos/hero.mp4` | Re-encoded at 1920×1080 (1080p) CRF 26, 1,281 kbps. File: 4.5 MB (was 1.9 MB). Quality is near-broadcast; streams on 4G without buffering (network bandwidth >> video bitrate). |
+| `public/videos/hero-poster.jpg` | Re-extracted from the higher-quality 1080p video (13 KB). |
+
+### QA Results (Session 10)
+
+| Command | Result |
+|---------|--------|
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
+## Changes Made (Session 11 — 2026-05-16)
+
+Footer cleanup: real Facebook URL, Instagram removed, developer credit added.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/data/siteContent.ts` | `SOCIAL.facebook` updated to real OMI page URL. `SOCIAL.instagram` removed entirely. |
+| `src/components/layout/footer.tsx` | Instagram icon/link deleted. Copyright bar updated: added `· Développé par 7 · 47470606` (WhatsApp deep-link `https://wa.me/22247470606`) next to "All rights reserved". Number wrapped in `<bdi dir="ltr">` for RTL safety. |
+| `messages/fr.json` | Removed `instagramLabel`. Added `devCredit: "Développé par 7"`. |
+| `messages/ar.json` | Removed `instagramLabel`. Added `devCredit: "طُوِّر بواسطة 7"`. |
+
+### QA Results (Session 11)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
 |------|--------|
-| Social media URLs (Facebook, Instagram) | PENDING — placeholder links (`facebook.com`, `instagram.com`) used in footer |
-| Final production domain | PENDING — `[FINAL_DOMAIN]` placeholder in sitemap.ts, schema JSON-LD, and a-propos page |
+| Facebook URL | ✅ RESOLVED — real OMI page URL live in footer |
+| Instagram | ✅ RESOLVED — removed (no account) |
+| Developer credit | ✅ RESOLVED — "Développé par 7 · 47470606" in copyright bar |
+| Final production domain | PENDING — `[FINAL_DOMAIN]` placeholder in `sitemap.ts`, schema JSON-LD, and `a-propos` page |
 | Arabic product names sign-off | PENDING — sourced from omi.mr/AR, needs client approval |
 | Product 17 (`Nettoyant lavandra 750ML`) category | PENDING — FR site = `surface`, AR site = `vaisselle`; currently assigned `surface` |
 | SMTP credentials for contact form | PENDING — form currently logs to console only |
