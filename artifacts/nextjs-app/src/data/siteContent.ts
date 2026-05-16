@@ -9,8 +9,6 @@ export const CONTACT = {
   cityAr: 'نواكشوط، موريتانيا',
 } as const;
 
-// CLIENT_CONFIRMATION: replace with real social media URLs
 export const SOCIAL = {
-  facebook: 'https://www.facebook.com',
-  instagram: 'https://www.instagram.com',
+  facebook: 'https://www.facebook.com/profile.php?id=61557716205802&mibextid=LQQJ4d',
 } as const;

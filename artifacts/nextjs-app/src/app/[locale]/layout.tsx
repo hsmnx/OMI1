@@ -66,10 +66,6 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={dir} className={fontClass}>
-      <head>
-        <link rel="preconnect" href="https://omi.mr" />
-        <link rel="dns-prefetch" href="https://omi.mr" />
-      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
