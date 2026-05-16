@@ -344,6 +344,40 @@ Video playback reliability pass. The hero video was stalling mid-play and had a 
 
 ---
 
+## Changes Made (Session 7 — 2026-05-16)
+
+Bug-fix pass: footer logo rendering, phone number RTL direction, and product image loading performance.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/layout/footer.tsx` | **Logo fix:** Both logo placements used `brightness-0 invert` CSS filters to attempt a white version on the dark background. Because `logo.png` has an opaque (non-transparent) background, `brightness-0` crushed every pixel to black and `invert` flipped them all to white — producing a solid white rectangle. Replaced with a white rounded container (`bg-white rounded-sm px-3 py-2` for the brand logo; `bg-white/90 rounded-sm px-2 py-1` for the copyright logo) that renders the logo at its natural colors, consistent with how the header already displays it. **Phone number RTL fix:** Wrapped `{CONTACT.phone}` in `<bdi dir="ltr">` so the number always reads left-to-right regardless of the `dir="rtl"` inherited from `<html>` in Arabic. |
+| `src/app/[locale]/page.tsx` | **Phone number RTL fix:** Wrapped `{CONTACT.phone}` in `<bdi dir="ltr">` inside the homepage contact CTA button. |
+| `src/app/[locale]/contact/page.tsx` | **Phone number RTL fix:** Wrapped `{CONTACT.phone}` in `<bdi dir="ltr">` on the contact page phone link. |
+| `src/app/[locale]/produits/[slug]/page.tsx` | **Phone number RTL fix:** Wrapped `{CONTACT.phone}` in `<bdi dir="ltr">` inside the product detail page CTA button. |
+| `src/components/sections/product-card.tsx` | **Image performance:** Added optional `priority?: boolean` prop and passed it to `<Image>`. When `true`, Next.js injects a `<link rel="preload">` and marks the fetch as high-priority, eliminating lazy-load delay for above-fold cards. |
+| `src/components/sections/product-grid.tsx` | **Image performance:** Passes `priority={index < 6}` to `ProductCard`, so the first 6 products in any filtered list (above-fold on all 2-, 3-, and 4-column breakpoints) load eagerly. |
+| `next.config.ts` | **Image cache TTL:** Raised `minimumCacheTTL` from `86400` (1 day) to `2592000` (30 days). Product images on `omi.mr/imageView.php` change only when new products are added — a 30-day server-side cache means each image is fetched from origin once per month after the first hit. |
+
+### Root Causes Addressed
+
+| Issue | Root Cause | Fix Applied |
+|-------|-----------|-------------|
+| White blob instead of logo in footer | `brightness-0 invert` applied to a PNG with opaque white background → entire image inverted to solid white | White rounded container wrapping the logo |
+| Phone number scrambled in Arabic | Plain text inside `<html dir="rtl">` — Unicode bidi algorithm reorders digit groups | `<bdi dir="ltr">` wrapper in all 4 render locations |
+| Product images slow / missing | All 18 grid images loaded lazily; 1-day image proxy cache meant repeated cold fetches from external PHP endpoint | `priority` prop for above-fold cards + 30-day cache TTL |
+
+### QA Results (Session 7)
+
+All commands run from `artifacts/nextjs-app/`:
+
+| Command | Result |
+|---------|--------|
+| `pnpm build` | ✅ 49/49 pages generated, 0 errors |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
