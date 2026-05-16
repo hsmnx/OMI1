@@ -507,6 +507,30 @@ Footer cleanup: real Facebook URL, Instagram removed, developer credit added.
 
 ---
 
+## Changes Made (Session 12 — 2026-05-16)
+
+Hero video mobile aspect-ratio fix.
+
+### Root Cause
+
+On portrait mobile (e.g. 390×844 px), `object-cover` must scale the 1920×1080 (16:9) video up to fill the tall narrow viewport. It scales to fit the height (844 px), which requires a render width of ~1 501 px — only the center ~26 % of the video's horizontal width was visible. The video appeared heavily zoomed-in with its left and right content cropped away.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/video-hero.tsx` | Changed `object-cover` → `object-contain md:object-cover` on the `<video>` element. On mobile (`< md`) `object-contain` scales the video to its full viewport width, letterboxed vertically within the full-screen section; the existing `bg-[#171717]` fallback div fills the transparent letterbox areas naturally and the gradient overlay covers the whole section uniformly. On desktop (`≥ md`) `object-cover` behaviour is unchanged. |
+
+### QA Results (Session 12)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+| `pnpm build` | ✅ 49/49 pages |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |
