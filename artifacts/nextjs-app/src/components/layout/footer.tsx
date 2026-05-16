@@ -26,7 +26,9 @@ export default async function Footer({ locale }: Props) {
       <div className="max-w-6xl mx-auto px-4 py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Col 1 — Brand */}
         <div className="flex flex-col gap-4">
-          <Image src="/logo.png" alt={tn('brandLogoAlt')} width={80} height={60} className="h-12 w-auto brightness-0 invert mb-2" />
+          <div className="inline-flex rounded-sm bg-white px-3 py-2 mb-2 self-start">
+            <Image src="/logo.png" alt={tn('brandLogoAlt')} width={80} height={60} className="h-10 w-auto" />
+          </div>
           <p className="text-sm leading-relaxed text-neutral-400">{t('aboutBody')}</p>
         </div>
 
@@ -47,7 +49,7 @@ export default async function Footer({ locale }: Props) {
           <h3 className="text-sm font-semibold text-white uppercase tracking-widest">{t('reachUs')}</h3>
           <div className="flex flex-col gap-2 text-sm text-neutral-400">
             <a href={CONTACT.phoneHref} className="hover:text-white transition-colors">
-              {CONTACT.phone}
+              <bdi dir="ltr">{CONTACT.phone}</bdi>
             </a>
             <a href={CONTACT.emailHref} className="hover:text-white transition-colors break-all">
               {CONTACT.email}
@@ -90,7 +92,9 @@ export default async function Footer({ locale }: Props) {
       <div className="border-t border-neutral-800">
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-neutral-500">
           <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt={tn('brandLogoAlt')} width={40} height={29} className="h-6 w-auto brightness-0 invert opacity-50" />
+            <div className="inline-flex rounded-sm bg-white/90 px-2 py-1">
+              <Image src="/logo.png" alt={tn('brandLogoAlt')} width={40} height={29} className="h-5 w-auto opacity-80" />
+            </div>
             <span>{t('copyright', { year })}</span>
           </div>
           <span>{t('rights')}</span>

@@ -78,7 +78,7 @@ export default async function ContactPage({ params }: Props) {
                 <span className="text-xs font-semibold text-neutral-400 uppercase tracking-widest">{t('phoneLabel')}</span>
               </div>
               <a href={CONTACT.phoneHref} className="text-2xl font-semibold text-neutral-900 hover:text-neutral-600 transition-colors">
-                {CONTACT.phone}
+                <bdi dir="ltr">{CONTACT.phone}</bdi>
               </a>
             </div>
 

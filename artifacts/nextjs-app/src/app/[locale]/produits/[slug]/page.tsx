@@ -115,7 +115,7 @@ export default async function ProductDetailPage({ params }: Props) {
                   href={CONTACT.phoneHref}
                   className="inline-flex items-center justify-center bg-neutral-900 text-white px-8 py-3 text-sm font-semibold rounded-sm hover:bg-neutral-700 transition-colors"
                 >
-                  {CONTACT.phone}
+                  <bdi dir="ltr">{CONTACT.phone}</bdi>
                 </a>
               </div>
             </div>

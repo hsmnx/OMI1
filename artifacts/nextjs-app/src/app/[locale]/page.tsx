@@ -86,7 +86,7 @@ export default async function HomePage({ params }: Props) {
               href={CONTACT.phoneHref}
               className="text-white border border-neutral-600 px-6 py-3 text-sm font-medium rounded-sm hover:bg-neutral-800 transition-colors"
             >
-              {CONTACT.phone}
+              <bdi dir="ltr">{CONTACT.phone}</bdi>
             </a>
             <Link
               href="/contact"
