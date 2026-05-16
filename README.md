@@ -600,6 +600,29 @@ All commands run from `artifacts/nextjs-app/`:
 
 ---
 
+## Changes Made (Session 15 — 2026-05-16)
+
+Hero video sound toggle. The video audio track was permanently silenced by a hardcoded `muted` attribute; there was no way for visitors to hear it.
+
+### Root Cause
+
+Browsers enforce an autoplay policy: media with audio will not autoplay unless the user has previously interacted with the page. The `muted` attribute was added precisely to allow instant autoplay. Removing it outright would stop the video from playing on page load. The correct solution is to keep `muted` for autoplay and provide a user-controlled sound toggle.
+
+### Updated
+
+| File | What Changed |
+|------|--------------|
+| `src/components/sections/video-hero.tsx` | Added `isMuted` state (default `true`). Added `toggleSound` handler that sets `videoRef.current.muted` directly (React's `muted` prop does not re-apply after mount — direct DOM mutation is required). Added a 44×44 px sound toggle `<button>` positioned `absolute bottom-4 end-4 z-20` (logical CSS — RTL-safe). Button shows a speaker-with-X icon when muted and a speaker-with-waves icon when live. Styled `bg-white/20 backdrop-blur-sm rounded-sm` to match the hero badge style. Full `focus-visible:ring` + `hover`/`active` states. Hidden when `videoError` is true. |
+
+### QA Results (Session 15)
+
+| Command | Result |
+|---------|--------|
+| `pnpm lint` | ✅ 0 warnings/errors |
+| `pnpm typecheck` | ✅ 0 errors |
+
+---
+
 ## Client Confirmation Items (Pending)
 
 | Item | Status |

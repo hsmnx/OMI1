@@ -9,6 +9,7 @@ export default function VideoHero() {
   const t = useTranslations('hero');
   const shouldReduce = useReducedMotion();
   const [videoError, setVideoError] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -24,6 +25,13 @@ export default function VideoHero() {
       video.removeEventListener('stalled', tryPlay);
     };
   }, []);
+
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
 
   return (
     <section className="relative bg-[#171717] overflow-hidden flex flex-col md:block md:min-h-[100svh]">
@@ -86,6 +94,29 @@ export default function VideoHero() {
           </Link>
         </div>
       </div>
+
+      {/* Sound toggle button */}
+      {!videoError && (
+        <button
+          onClick={toggleSound}
+          aria-label={isMuted ? 'Activer le son' : 'Désactiver le son'}
+          className="absolute bottom-4 end-4 z-20 w-11 h-11 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-sm text-white hover:bg-white/30 active:bg-white/40 transition duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
+        >
+          {isMuted ? (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <line x1="23" y1="9" x2="17" y2="15" />
+              <line x1="17" y1="9" x2="23" y2="15" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            </svg>
+          )}
+        </button>
+      )}
 
       {/* ── DESKTOP: full overlay with motion animation ── */}
       <div className="hidden md:flex md:absolute md:inset-0 md:z-10 md:items-center md:px-4 md:py-24">
