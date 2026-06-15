@@ -21,6 +21,7 @@ export const products: Product[] = [
     size: '300ML',
     scent: 'lavandra',
     imageId: 2,
+    imageSrc: '/images/products/img-lave-main.png',
     bg: '#F3E5F5',
   },
   {
@@ -32,6 +33,7 @@ export const products: Product[] = [
     size: '500ml',
     scent: 'lavandra',
     imageId: 3,
+    imageSrc: '/images/products/img-nettoyant-vitres.png',
     bg: '#EDE7F6',
   },
   {
@@ -43,6 +45,7 @@ export const products: Product[] = [
     size: '500ml',
     scent: 'original',
     imageId: 4,
+    imageSrc: '/images/products/img-nettoyant-vitres.png',
     bg: '#E3F2FD',
   },
   {
@@ -54,6 +57,7 @@ export const products: Product[] = [
     size: '1,5L',
     scent: 'limon',
     imageId: 5,
+    imageSrc: '/images/products/img-nettoyant-surface.png',
     bg: '#FFFDE7',
   },
   {
@@ -65,6 +69,7 @@ export const products: Product[] = [
     size: '1,5L',
     scent: 'lavandra',
     imageId: 6,
+    imageSrc: '/images/products/img-nettoyant-surface.png',
     bg: '#F3E5F5',
   },
   {
@@ -76,6 +81,7 @@ export const products: Product[] = [
     size: '1,5L',
     scent: 'original',
     imageId: 7,
+    imageSrc: '/images/products/img-nettoyant-surface.png',
     bg: '#F5F5F5',
   },
   {
@@ -87,6 +93,7 @@ export const products: Product[] = [
     size: '1L',
     scent: 'original',
     imageId: 8,
+    imageSrc: '/images/products/img-javel.png',
     bg: '#E8F5E9',
   },
   {
@@ -97,6 +104,7 @@ export const products: Product[] = [
     nameAr: 'مسحوق غسيل ماكسي كلين',
     size: '25g',
     imageId: 9,
+    imageSrc: '/images/products/img-detergent.png',
     bg: '#E3F2FD',
   },
   {
@@ -107,6 +115,7 @@ export const products: Product[] = [
     nameAr: 'مسحوق غسيل ماكسي كلين',
     size: '15g',
     imageId: 10,
+    imageSrc: '/images/products/img-detergent.png',
     bg: '#E8F5E9',
   },
   {
@@ -114,10 +123,11 @@ export const products: Product[] = [
     slug: 'savon-pates-citron-1kg',
     categoryId: 'savon',
     nameFr: 'Savon pâtes citron',
-    nameAr: 'صابون الليمون بالقوالب',
+    nameAr: 'معجون غسيل بالليمون',
     size: '1kg',
     scent: 'limon',
     imageId: 11,
+    imageSrc: '/images/products/img-savon-pates.png',
     bg: '#FFFDE7',
   },
   {
@@ -129,6 +139,7 @@ export const products: Product[] = [
     size: '5L',
     scent: 'original',
     imageId: 12,
+    imageSrc: '/images/products/img-nettoyant-surface.png',
     bg: '#FAFAFA',
   },
   {
@@ -140,6 +151,7 @@ export const products: Product[] = [
     size: '300ML',
     scent: 'original',
     imageId: 13,
+    imageSrc: '/images/products/img-lave-main.png',
     bg: '#E3F2FD',
   },
   {
@@ -147,10 +159,11 @@ export const products: Product[] = [
     slug: 'savon-pates-original-1kg',
     categoryId: 'savon',
     nameFr: 'Savon pâtes original',
-    nameAr: 'صابون القوالب الأصلي',
+    nameAr: 'معجون غسيل الأصلي',
     size: '1kg',
     scent: 'original',
     imageId: 14,
+    imageSrc: '/images/products/img-savon-pates.png',
     bg: '#F5F5F5',
   },
   {
@@ -158,10 +171,11 @@ export const products: Product[] = [
     slug: 'savon-pates-citron-0-25kg',
     categoryId: 'savon',
     nameFr: 'Savon pâtes citron',
-    nameAr: 'صابون الليمون',
+    nameAr: 'معجون غسيل بالليمون',
     size: '0,25kg',
     scent: 'limon',
     imageId: 15,
+    imageSrc: '/images/products/img-savon-pates.png',
     bg: '#FFFDE7',
   },
   {
@@ -169,10 +183,11 @@ export const products: Product[] = [
     slug: 'savon-pates-citron-0-5kg',
     categoryId: 'savon',
     nameFr: 'Savon pâtes citron',
-    nameAr: 'صابون الليمون بالقوالب',
+    nameAr: 'معجون غسيل بالليمون',
     size: '0,5kg',
     scent: 'limon',
     imageId: 16,
+    imageSrc: '/images/products/img-savon-pates.png',
     bg: '#FFF8E1',
   },
   {
@@ -185,6 +200,7 @@ export const products: Product[] = [
     size: '750ML',
     scent: 'lavandra',
     imageId: 17,
+    imageSrc: '/images/products/img-nettoyant-surface.png',
     bg: '#F3E5F5',
   },
   {
@@ -196,6 +212,7 @@ export const products: Product[] = [
     size: '5L',
     scent: 'original',
     imageId: 18,
+    imageSrc: '/images/products/img-javel.png',
     bg: '#E8F5E9',
   },
   {
