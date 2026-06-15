@@ -60,7 +60,13 @@
       "savon-pates-citron-0-25kg": "Savon en pâte au citron, format compact 250g.",
       "savon-pates-citron-0-5kg": "Savon en pâte au citron, format intermédiaire 500g.",
       "nettoyant-lavandra-750ml": "Nettoyant multi-usages parfum lavande, format pratique 750ML.",
-      "eau-de-javel-original-5l": "Eau de javel désinfectante formule originale, grand format 5L."
+      "eau-de-javel-original-5l": "Eau de javel désinfectante formule originale, grand format 5L.",
+      "power-gel-matic-lavanda-3kg": "Lessive liquide 2en1 antibactérienne, parfum lavande, 3 Kg — pour lave-linge automatique.",
+      "power-gel-matic-aquatique-3kg": "Lessive liquide 2en1 antibactérienne, parfum aquatique, 3 Kg — pour lave-linge automatique.",
+      "maxi-plus-serviettes": "Serviettes de table Original Maxi Plus, douces et absorbantes.",
+      "maxi-plus-jumbo": "Bobine de papier absorbant Jumbo Maxi Plus, grande capacité.",
+      "maxi-plus-classic-2": "Bobines de cuisine Maxi Plus Classic, lot de 2, ultra absorbantes.",
+      "maxi-plus-classic-6": "Bobines de cuisine Maxi Plus Classic, lot de 6, ultra absorbantes."
     }
   },
   "categories": {
@@ -71,6 +77,8 @@
     "vitres": "Nettoyant vitres",
     "surface": "Nettoyant surface",
     "vaisselle": "Nettoyant vaisselle",
+    "gel-matic": "Power Gel Matic",
+    "maxi-plus": "Maxi Plus",
     "sectionTitle": "Nos catégories",
     "sectionSubtitle": "Découvrez notre gamme complète, organisée par type de produit.",
     "productsCount": "{count, plural, one {# produit} other {# produits}}"

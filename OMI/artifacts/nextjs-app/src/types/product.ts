@@ -1,4 +1,4 @@
-export type Scent = 'limon' | 'lavandra' | 'original';
+export type Scent = 'limon' | 'lavandra' | 'original' | 'aquatique';
 
 export interface Category {
   id: string;
@@ -16,5 +16,6 @@ export interface Product {
   size: string;
   scent?: Scent;
   imageId: number;
+  imageSrc?: string;
   bg: string;
 }

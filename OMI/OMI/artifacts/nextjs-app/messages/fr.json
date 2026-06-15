@@ -1,0 +1,151 @@
+{
+  "site": {
+    "title": "OMI Mauritanie — Produits de nettoyage haute qualité",
+    "description": "OMI est spécialisée dans les produits de nettoyage de haute qualité à Nouakchott, Mauritanie. Découvrez notre gamme de nettoyants surfaces, vaisselle, vitres, javel et plus.",
+    "titleTemplate": "{title} | OMI Mauritanie"
+  },
+  "nav": {
+    "home": "Accueil",
+    "products": "Produits",
+    "collections": "Nos gammes",
+    "about": "À propos",
+    "contact": "Contactez-nous",
+    "switchLang": "عربي",
+    "switchLangLocale": "ar",
+    "madeIn": "FABRIQUÉ EN MAURITANIE",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "brandLogoAlt": "Logo OMI"
+  },
+  "hero": {
+    "badge": "FABRIQUÉ EN MAURITANIE",
+    "headline": "Produits de nettoyage haute qualité",
+    "subheadline": "OMI se distingue par son engagement envers les normes de qualité et de sécurité les plus élevées, garantissant des produits qui répondent à vos attentes.",
+    "ctaPrimary": "Voir les produits",
+    "ctaSecondary": "À propos de nous",
+    "marquee1": "Haute qualité",
+    "marquee2": "Fabriqué en Mauritanie",
+    "marquee3": "Nettoyage & Sécurité",
+    "marquee4": "Durabilité"
+  },
+  "products": {
+    "pageTitle": "Nos Produits",
+    "pageSubtitle": "Découvrez notre gamme complète de produits de nettoyage haute qualité.",
+    "filterAll": "Tous",
+    "filterBy": "Filtrer par gamme",
+    "backToCatalog": "Retour au catalogue",
+    "relatedProducts": "Produits similaires",
+    "notFound": "Produit introuvable",
+    "notFoundBody": "Ce produit n'existe pas ou a été supprimé.",
+    "noResults": "Aucun produit dans cette gamme.",
+    "viewAll": "Voir tous les produits",
+    "size": "Contenance",
+    "category": "Gamme",
+    "contactForInfo": "Pour plus d'informations, contactez-nous.",
+    "descriptions": {
+      "nettoyant-vaisselle-limon-750ml": "Nettoyant vaisselle concentré au citron, efficace contre les graisses pour une vaisselle éclatante.",
+      "lave-main-lavandra-300ml": "Lave-mains liquide parfum lavande, doux pour les mains tout en éliminant les impuretés.",
+      "nettoyant-vitres-lavandra-500ml": "Nettoyant pour vitres au parfum lavande, résultat sans traces ni résidus.",
+      "nettoyant-vitres-original-500ml": "Nettoyant pour vitres formule originale, pour un résultat brillant et net.",
+      "nettoyant-surface-limon-1-5l": "Nettoyant multi-surfaces au citron, format économique 1,5L pour toute la maison.",
+      "nettoyant-surface-lavandra-1-5l": "Nettoyant multi-surfaces parfum lavande, format économique 1,5L.",
+      "nettoyant-surface-original-1-5l": "Nettoyant multi-surfaces formule originale, format économique 1,5L.",
+      "eau-de-javel-original-1l": "Eau de javel désinfectante formule originale, format 1L.",
+      "detergent-poudre-25g": "Détergent en poudre haute performance, sachet individuel 25g.",
+      "detergent-poudre-15g": "Détergent en poudre haute performance, sachet individuel 15g.",
+      "savon-pates-citron-1kg": "Savon en pâte au citron, pot 1kg pour un usage intensif.",
+      "nettoyant-surface-original-5l": "Nettoyant multi-surfaces formule originale, grand format 5L pour une utilisation intensive.",
+      "lave-main-original-300ml": "Lave-mains liquide formule originale, format 300ML.",
+      "savon-pates-original-1kg": "Savon en pâte formule originale, pot 1kg.",
+      "savon-pates-citron-0-25kg": "Savon en pâte au citron, format compact 250g.",
+      "savon-pates-citron-0-5kg": "Savon en pâte au citron, format intermédiaire 500g.",
+      "nettoyant-lavandra-750ml": "Nettoyant multi-usages parfum lavande, format pratique 750ML.",
+      "eau-de-javel-original-5l": "Eau de javel désinfectante formule originale, grand format 5L."
+    }
+  },
+  "categories": {
+    "detergent": "Détergent poudre",
+    "lave-main": "Lave main liquide",
+    "javel": "Javel",
+    "savon": "Savons en pâte",
+    "vitres": "Nettoyant vitres",
+    "surface": "Nettoyant surface",
+    "vaisselle": "Nettoyant vaisselle",
+    "sectionTitle": "Nos catégories",
+    "sectionSubtitle": "Découvrez notre gamme complète, organisée par type de produit.",
+    "productsCount": "{count, plural, one {# produit} other {# produits}}"
+  },
+  "whyOmi": {
+    "sectionTitle": "Ce qui nous distingue",
+    "sectionSubtitle": "Choisir OMI, c'est choisir des produits de nettoyage haute qualité, formulés avec rigueur pour répondre à vos besoins.",
+    "item1Title": "Qualité supérieure",
+    "item1Body": "Produits formulés avec des ingrédients avancés et des techniques de fabrication modernes pour une efficacité maximale.",
+    "item2Title": "Innovation continue",
+    "item2Body": "Engagement envers la recherche et l'innovation pour des formules constamment améliorées.",
+    "item3Title": "Sécurité & Durabilité",
+    "item3Body": "Respect des normes strictes de qualité, de sécurité et de développement durable à chaque étape de fabrication."
+  },
+  "aboutSnippet": {
+    "tagline": "Nettoyage, Garantie & Sécurité et Durabilité",
+    "body": "OMI est une entreprise spécialisée dans les produits de nettoyage de haute qualité à Nouakchott, en Mauritanie.",
+    "cta": "En savoir plus"
+  },
+  "about": {
+    "pageTitle": "À propos de OMI",
+    "headline": "Nettoyage, Garantie & Sécurité et Durabilité",
+    "body": "OMI est une entreprise spécialisée dans les produits de nettoyage de haute qualité à Nouakchott, en Mauritanie. Notre gamme diversifiée comprend des nettoyants pour la maison, la cuisine, la salle de bains, les surfaces et les vêtements, tous formulés avec des ingrédients avancés et des techniques de fabrication modernes.",
+    "mission": "Notre mission est de fournir des produits de nettoyage efficaces, sûrs et durables pour chaque foyer mauritanien.",
+    "qualityTitle": "Notre engagement qualité",
+    "qualityBody": "OMI se distingue par son engagement envers les normes de qualité et de sécurité les plus élevées, garantissant que nos produits répondent aux attentes de nos clients.",
+    "locationTitle": "Fabriqué en Mauritanie",
+    "locationBody": "Nos produits sont fabriqués dans notre usine à la Zone industrielle Dar Naim, Nouakchott, Mauritanie.",
+    "discoverProducts": "Découvrir nos produits",
+    "stats1Label": "Produits",
+    "stats2Label": "Catégories",
+    "stats3Label": "Mauritanie"
+  },
+  "contact": {
+    "pageTitle": "Contactez-nous",
+    "headline": "Nous sommes à votre disposition",
+    "subheadline": "Pour toute demande commerciale ou question sur nos produits, n'hésitez pas à nous contacter.",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "Email",
+    "addressLabel": "Adresse",
+    "formTitle": "Envoyez-nous un message",
+    "formName": "Votre nom",
+    "formEmail": "Votre adresse email",
+    "formMessage": "Votre message",
+    "formSubmit": "Envoyer le message",
+    "formSending": "Envoi en cours...",
+    "formSuccess": "Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.",
+    "formError": "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement par téléphone.",
+    "formNamePlaceholder": "Jean Dupont",
+    "formEmailPlaceholder": "vous@example.com",
+    "formMessagePlaceholder": "Décrivez votre demande..."
+  },
+  "contactCta": {
+    "headline": "Une question sur nos produits ?",
+    "body": "Notre équipe commerciale est disponible pour répondre à toutes vos demandes.",
+    "cta": "Nous contacter"
+  },
+  "footer": {
+    "aboutBody": "Produits de nettoyage haute qualité, fabriqués en Mauritanie.",
+    "navigate": "Navigation",
+    "reachUs": "Contact",
+    "follow": "Suivez-nous",
+    "rights": "Tous droits réservés.",
+    "copyright": "© {year} OMI Mauritanie.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "facebookLabel": "Page Facebook OMI",
+    "devCredit": "Développé par 7"
+  },
+  "breadcrumb": {
+    "home": "Accueil",
+    "products": "Produits"
+  },
+  "schema": {
+    "orgName": "OMI Mauritanie",
+    "orgDescription": "Entreprise spécialisée dans les produits de nettoyage de haute qualité à Nouakchott, Mauritanie."
+  }
+}

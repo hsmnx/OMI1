@@ -39,11 +39,13 @@ export default async function ProductDetailPage({ params }: Props) {
   const description = t(`descriptions.${product.slug}` as Parameters<typeof t>[0]);
   const related = getRelatedProducts(product, 3);
 
+  const imgSrc = product.imageSrc ?? `https://omi.mr/imageView.php?id=${product.imageId}`;
+
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name,
-    image: `https://omi.mr/imageView.php?id=${product.imageId}`,
+    image: imgSrc,
     description,
     brand: { '@type': 'Brand', name: 'OMI Mauritanie' },
     offers: {
@@ -85,7 +87,7 @@ export default async function ProductDetailPage({ params }: Props) {
               style={{ backgroundColor: product.bg }}
             >
               <Image
-                src={`https://omi.mr/imageView.php?id=${product.imageId}`}
+                src={imgSrc}
                 alt={name}
                 fill
                 priority
@@ -105,9 +107,11 @@ export default async function ProductDetailPage({ params }: Props) {
                 </Link>
               )}
               <h1 className="text-4xl font-bold text-neutral-900">{name}</h1>
-              <span className="inline-flex self-start bg-neutral-900 text-white text-sm px-4 py-1.5 rounded-sm font-medium">
-                {product.size}
-              </span>
+              {product.size && (
+                <span className="inline-flex self-start bg-neutral-900 text-white text-sm px-4 py-1.5 rounded-sm font-medium">
+                  {product.size}
+                </span>
+              )}
               <p className="text-neutral-600 leading-relaxed">{description}</p>
               <div className="pt-4 border-t border-neutral-100">
                 <p className="text-sm text-neutral-500 mb-4">{t('contactForInfo')}</p>

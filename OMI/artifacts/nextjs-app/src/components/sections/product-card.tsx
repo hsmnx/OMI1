@@ -12,6 +12,8 @@ type Props = {
 export default function ProductCard({ product, locale, categoryName, priority }: Props) {
   const name = locale === 'ar' ? product.nameAr : product.nameFr;
   const viewLabel = locale === 'ar' ? 'عرض' : 'Voir';
+  const imgSrc = product.imageSrc ?? `https://omi.mr/imageView.php?id=${product.imageId}`;
+  const textDir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
     <Link
@@ -23,7 +25,7 @@ export default function ProductCard({ product, locale, categoryName, priority }:
         style={{ backgroundColor: product.bg }}
       >
         <Image
-          src={`https://omi.mr/imageView.php?id=${product.imageId}`}
+          src={imgSrc}
           alt={name}
           fill
           priority={priority}
@@ -38,10 +40,16 @@ export default function ProductCard({ product, locale, categoryName, priority }:
         </div>
       </div>
       <div className="space-y-0.5">
-        <p className="text-base font-semibold text-neutral-900 leading-snug group-hover:text-neutral-600 transition-colors">
+        <p
+          className="text-base font-semibold text-neutral-900 leading-snug group-hover:text-neutral-600 transition-colors"
+          lang={locale}
+          dir={textDir}
+        >
           {name}
         </p>
-        <p className="text-xs text-neutral-400 uppercase tracking-wide">{categoryName}</p>
+        <p className="text-xs text-neutral-400 uppercase tracking-wide" lang={locale} dir={textDir}>
+          {categoryName}
+        </p>
       </div>
     </Link>
   );

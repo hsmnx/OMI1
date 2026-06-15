@@ -16,6 +16,8 @@ export default function VideoHero() {
     const video = videoRef.current;
     if (!video) return;
 
+    video.muted = isMuted;
+
     const tryPlay = () => video.play().catch(() => {});
 
     tryPlay();
@@ -24,7 +26,7 @@ export default function VideoHero() {
     return () => {
       video.removeEventListener('stalled', tryPlay);
     };
-  }, []);
+  }, [isMuted]);
 
   const toggleSound = () => {
     const video = videoRef.current;

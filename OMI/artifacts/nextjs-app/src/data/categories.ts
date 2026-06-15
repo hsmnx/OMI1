@@ -8,6 +8,8 @@ export const categories: Category[] = [
   { id: 'vitres', slug: 'vitres', nameFr: 'Nettoyant vitres', nameAr: 'منظف الزجاج' },
   { id: 'surface', slug: 'surface', nameFr: 'Nettoyant surface', nameAr: 'منظف الأسطح' },
   { id: 'vaisselle', slug: 'vaisselle', nameFr: 'Nettoyant vaisselle', nameAr: 'منظف الأواني' },
+  { id: 'gel-matic', slug: 'gel-matic', nameFr: 'Power Gel Matic', nameAr: 'باور جيل ماتيك' },
+  { id: 'maxi-plus', slug: 'maxi-plus', nameFr: 'Maxi Plus', nameAr: 'ماكسي بلاس' },
 ];
 
 export function getCategoryById(id: string): Category | undefined {
