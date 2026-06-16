@@ -43,7 +43,7 @@ export default function AProposLoading() {
       </section>
 
       {/* Mission skeleton */}
-      <section className="py-16 px-4 bg-[#f8f7f5]">
+      <section className="py-16 px-4 bg-[var(--background)]">
         <div className="max-w-3xl mx-auto flex flex-col items-center gap-6">
           <div className="h-7 w-full max-w-lg bg-neutral-200 rounded animate-pulse" />
           <div className="h-11 w-40 bg-neutral-200 rounded-sm animate-pulse" />

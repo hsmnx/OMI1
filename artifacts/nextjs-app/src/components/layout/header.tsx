@@ -42,7 +42,11 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 rounded-sm">
-          <Image src="/logo.png" alt={t('brandLogoAlt')} width={60} height={44} priority className="h-9 w-auto" />
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt={t('brandLogoAlt')} width={60} height={44} priority className="h-9 w-auto" />
+            <span className="text-neutral-400 text-base font-light select-none leading-none">&amp;</span>
+            <Image src="/maxi-logo.jpg" alt="Maxi Clean" width={80} height={44} priority className="h-9 w-auto rounded-sm" />
+          </div>
         </Link>
 
         {/* Desktop nav */}

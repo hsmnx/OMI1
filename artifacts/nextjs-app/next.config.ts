@@ -22,6 +22,20 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2592000,
   },
 
+  async redirects() {
+    return [
+      { source: '/:locale/produits/detergent-poudre-15g', destination: '/:locale/produits/detergent-poudre', permanent: true },
+      { source: '/:locale/produits/detergent-poudre-25g', destination: '/:locale/produits/detergent-poudre', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-original-5l', destination: '/:locale/produits/nettoyant-surface-original', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-original-1-5l', destination: '/:locale/produits/nettoyant-surface-original', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-0-25kg', destination: '/:locale/produits/savon-pates-citron', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-0-5kg', destination: '/:locale/produits/savon-pates-citron', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-1kg', destination: '/:locale/produits/savon-pates-citron', permanent: true },
+      { source: '/:locale/produits/eau-de-javel-original-5l', destination: '/:locale/produits/eau-de-javel', permanent: true },
+      { source: '/:locale/produits/eau-de-javel-original-1l', destination: '/:locale/produits/eau-de-javel', permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

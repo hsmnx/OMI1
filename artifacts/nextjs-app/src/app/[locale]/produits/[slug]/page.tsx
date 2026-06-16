@@ -90,8 +90,12 @@ export default async function ProductDetailPage({ params }: Props) {
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-10"
+                className="object-cover"
               />
+              {/* OMI logo watermark */}
+              <div className="absolute bottom-3 end-3 z-10 pointer-events-none">
+                <Image src="/logo.png" alt="" width={48} height={35} className="h-8 w-auto opacity-70" />
+              </div>
             </div>
 
             {/* Product info */}
@@ -125,7 +129,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="py-16 px-4 bg-[#f8f7f5]">
+        <section className="py-16 px-4 bg-[var(--background)]">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-semibold text-neutral-900 mb-8">{t('relatedProducts')}</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
