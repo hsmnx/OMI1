@@ -14,7 +14,7 @@ export default function LocaleError({ error, reset }: Props) {
   }, [error]);
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4 bg-[#f8f7f5]">
+    <div className="min-h-[60vh] flex items-center justify-center px-4 bg-[var(--background)]">
       <div className="max-w-md text-center flex flex-col items-center gap-6">
         <div className="text-6xl font-light text-neutral-300">!</div>
         <div className="flex flex-col gap-2">

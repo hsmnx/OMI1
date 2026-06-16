@@ -14,7 +14,7 @@ export default function WhyOMI() {
   const shouldReduce = useReducedMotion();
 
   return (
-    <section className="py-24 px-4 bg-[#f8f7f5]">
+    <section className="py-24 px-4 bg-[var(--background)]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-semibold text-neutral-900 mb-3">

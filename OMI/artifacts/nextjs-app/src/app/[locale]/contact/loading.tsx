@@ -1,7 +1,7 @@
 export default function ContactLoading() {
   return (
     <div>
-      <section className="bg-[#f8f7f5] py-16 px-4">
+      <section className="bg-[var(--background)] py-16 px-4">
         <div className="max-w-2xl mx-auto space-y-3">
           <div className="h-4 w-16 bg-neutral-100 rounded animate-pulse mb-4" />
           <div className="h-10 w-60 bg-neutral-200 rounded-sm animate-pulse" />

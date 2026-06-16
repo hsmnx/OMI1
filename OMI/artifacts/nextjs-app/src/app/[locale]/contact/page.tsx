@@ -49,7 +49,7 @@ export default async function ContactPage({ params }: Props) {
   return (
     <div>
       {/* Page hero */}
-      <section className="bg-[#f8f7f5] py-16 px-4">
+      <section className="bg-[var(--background)] py-16 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="omi-animate">
             <Link

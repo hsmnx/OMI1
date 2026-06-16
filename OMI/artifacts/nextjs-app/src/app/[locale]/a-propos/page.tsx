@@ -114,7 +114,7 @@ export default async function AProposPage({ params }: Props) {
       </section>
 
       {/* Section 4 — Mission CTA */}
-      <section className="py-16 px-4 bg-[#f8f7f5]">
+      <section className="py-16 px-4 bg-[var(--background)]">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
           <div className="omi-animate">
             <p className="text-xl text-neutral-700 leading-relaxed font-medium">{t('mission')}</p>

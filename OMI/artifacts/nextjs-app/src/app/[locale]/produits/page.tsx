@@ -40,7 +40,7 @@ export default async function ProduitsPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <section className="bg-[#f8f7f5] py-16 px-4">
+      <section className="bg-[var(--background)] py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="omi-animate">
             <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-700 transition-colors mb-4">

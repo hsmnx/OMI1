@@ -22,6 +22,30 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2592000,
   },
 
+  async redirects() {
+    return [
+      { source: '/:locale/produits/lave-main-lavandra-300ml', destination: '/:locale/produits/lave-main', permanent: true },
+      { source: '/:locale/produits/lave-main-original-300ml', destination: '/:locale/produits/lave-main', permanent: true },
+      { source: '/:locale/produits/nettoyant-vitres-lavandra-500ml', destination: '/:locale/produits/nettoyant-vitres', permanent: true },
+      { source: '/:locale/produits/nettoyant-vitres-original-500ml', destination: '/:locale/produits/nettoyant-vitres', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-limon-1-5l', destination: '/:locale/produits/nettoyant-surface', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-lavandra-1-5l', destination: '/:locale/produits/nettoyant-surface', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-original-1-5l', destination: '/:locale/produits/nettoyant-surface', permanent: true },
+      { source: '/:locale/produits/nettoyant-surface-original-5l', destination: '/:locale/produits/nettoyant-surface', permanent: true },
+      { source: '/:locale/produits/nettoyant-lavandra-750ml', destination: '/:locale/produits/nettoyant-surface', permanent: true },
+      { source: '/:locale/produits/eau-de-javel-original-1l', destination: '/:locale/produits/eau-de-javel', permanent: true },
+      { source: '/:locale/produits/eau-de-javel-original-5l', destination: '/:locale/produits/eau-de-javel', permanent: true },
+      { source: '/:locale/produits/detergent-poudre-25g', destination: '/:locale/produits/detergent-poudre', permanent: true },
+      { source: '/:locale/produits/detergent-poudre-15g', destination: '/:locale/produits/detergent-poudre', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-1kg', destination: '/:locale/produits/savon-pates', permanent: true },
+      { source: '/:locale/produits/savon-pates-original-1kg', destination: '/:locale/produits/savon-pates', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-0-25kg', destination: '/:locale/produits/savon-pates', permanent: true },
+      { source: '/:locale/produits/savon-pates-citron-0-5kg', destination: '/:locale/produits/savon-pates', permanent: true },
+      { source: '/:locale/produits/power-gel-matic-lavanda-3kg', destination: '/:locale/produits/power-gel-matic', permanent: true },
+      { source: '/:locale/produits/power-gel-matic-aquatique-3kg', destination: '/:locale/produits/power-gel-matic', permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

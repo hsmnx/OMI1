@@ -1,7 +1,7 @@
 export default function ProduitsLoading() {
   return (
     <div>
-      <section className="bg-[#f8f7f5] py-16 px-4">
+      <section className="bg-[var(--background)] py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="h-10 w-52 bg-neutral-200 rounded animate-pulse mb-3" />
           <div className="h-5 w-80 bg-neutral-100 rounded animate-pulse" />

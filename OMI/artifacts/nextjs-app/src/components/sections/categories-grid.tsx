@@ -21,7 +21,7 @@ export default function CategoriesGrid() {
   }, []);
 
   return (
-    <section aria-labelledby="categories-heading" className="py-20 px-4 bg-[#f8f7f5]">
+    <section aria-labelledby="categories-heading" className="py-20 px-4 bg-[var(--background)]">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
