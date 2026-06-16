@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'motion/react';
 import { Link } from '@/i18n/navigation';
@@ -9,19 +9,23 @@ export default function VideoHero() {
   const t = useTranslations('hero');
   const shouldReduce = useReducedMotion();
   const [videoError, setVideoError] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Callback ref fires synchronously on DOM commit, before browser's async autoplay check —
+  // this is the correct fix for the React muted-prop hydration bug.
+  const attachVideo = useCallback((el: HTMLVideoElement | null) => {
+    videoRef.current = el;
+    if (!el) return;
+    el.muted = true;
+    el.play().catch(() => {});
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    video.muted = true;
-
-    const tryPlay = () => video.play().catch(() => {});
-    tryPlay();
-    video.addEventListener('stalled', tryPlay);
-
-    return () => video.removeEventListener('stalled', tryPlay);
+    const resume = () => { video.muted = true; video.play().catch(() => {}); };
+    video.addEventListener('stalled', resume);
+    return () => video.removeEventListener('stalled', resume);
   }, []);
 
   return (
@@ -44,7 +48,7 @@ export default function VideoHero() {
           Desktop: absolute fullscreen background, object-cover */}
       {!videoError && (
         <video
-          ref={videoRef}
+          ref={attachVideo}
           autoPlay
           muted
           loop
