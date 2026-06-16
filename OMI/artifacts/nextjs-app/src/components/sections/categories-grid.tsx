@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'motion/react';
 import { categories } from '@/data/categories';
@@ -21,7 +21,15 @@ export default function CategoriesGrid() {
   }, []);
 
   return (
-    <section aria-labelledby="categories-heading" className="py-20 px-4 bg-[var(--background)]">
+    <section aria-labelledby="categories-heading" className="relative py-20 px-4 bg-[var(--background)] overflow-hidden">
+      {/* Bubble decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="omi-bubble" style={{ width: 48, height: 48, left: '6%', bottom: '12%', '--bubble-dur': '7s', animationDelay: '0s' } as React.CSSProperties} />
+        <div className="omi-bubble" style={{ width: 22, height: 22, left: '22%', bottom: '22%', '--bubble-dur': '5.5s', animationDelay: '1.8s' } as React.CSSProperties} />
+        <div className="omi-bubble" style={{ width: 64, height: 64, left: '52%', bottom: '6%', '--bubble-dur': '9s', animationDelay: '3.2s' } as React.CSSProperties} />
+        <div className="omi-bubble" style={{ width: 32, height: 32, left: '74%', bottom: '18%', '--bubble-dur': '6.5s', animationDelay: '0.6s' } as React.CSSProperties} />
+        <div className="omi-bubble" style={{ width: 44, height: 44, left: '91%', bottom: '9%', '--bubble-dur': '8s', animationDelay: '2.4s' } as React.CSSProperties} />
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -31,10 +39,10 @@ export default function CategoriesGrid() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <h2 id="categories-heading" className="text-3xl font-semibold text-neutral-900 mb-3">
+          <h2 id="categories-heading" className="text-3xl font-semibold text-white mb-3">
             {t('sectionTitle')}
           </h2>
-          <p className="text-neutral-500 max-w-xl mx-auto">
+          <p className="text-white/80 max-w-xl mx-auto">
             {t('sectionSubtitle')}
           </p>
         </motion.div>

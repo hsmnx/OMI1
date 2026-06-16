@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
@@ -40,17 +40,24 @@ export default async function ProduitsPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <section className="bg-[var(--background)] py-16 px-4">
+      <section className="relative bg-[var(--background)] py-16 px-4 overflow-hidden">
+        {/* Bubble decoration */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <div className="omi-bubble" style={{ width: 36, height: 36, left: '5%', bottom: '15%', '--bubble-dur': '6s', animationDelay: '0s' } as React.CSSProperties} />
+          <div className="omi-bubble" style={{ width: 56, height: 56, left: '40%', bottom: '8%', '--bubble-dur': '8.5s', animationDelay: '2s' } as React.CSSProperties} />
+          <div className="omi-bubble" style={{ width: 24, height: 24, left: '70%', bottom: '20%', '--bubble-dur': '5s', animationDelay: '1s' } as React.CSSProperties} />
+          <div className="omi-bubble" style={{ width: 42, height: 42, left: '88%', bottom: '10%', '--bubble-dur': '7.5s', animationDelay: '3.5s' } as React.CSSProperties} />
+        </div>
         <div className="max-w-6xl mx-auto">
           <div className="omi-animate">
-            <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-700 transition-colors mb-4">
+            <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white transition-colors mb-4">
               <svg className="w-3 h-3 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
               {t_nav('home')}
             </Link>
-            <h1 className="text-4xl font-bold text-neutral-900 mb-2">{t('pageTitle')}</h1>
-            <p className="text-neutral-500">{t('pageSubtitle')}</p>
+            <h1 className="text-4xl font-bold text-white mb-2">{t('pageTitle')}</h1>
+            <p className="text-white/80">{t('pageSubtitle')}</p>
           </div>
         </div>
       </section>

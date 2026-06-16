@@ -70,10 +70,10 @@ export default async function ProductDetailPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <section className="py-12 px-4 bg-white">
+      <section className="py-12 px-4 bg-[var(--background)]">
         <div className="max-w-6xl mx-auto">
           {/* Back link */}
-          <Link href="/produits" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors mb-8 inline-flex items-center gap-1">
+          <Link href="/produits" className="text-sm text-white/70 hover:text-white transition-colors mb-8 inline-flex items-center gap-1">
             <svg className="w-4 h-4 rotate-180 rtl:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -105,23 +105,23 @@ export default async function ProductDetailPage({ params }: Props) {
               {cat && (
                 <Link
                   href={`/produits?categorie=${cat.id}`}
-                  className="self-start bg-neutral-100 text-neutral-600 text-xs font-medium px-3 py-1.5 rounded-full hover:bg-neutral-200 transition-colors"
+                  className="self-start bg-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full hover:bg-white/30 transition-colors"
                 >
                   {categoryName}
                 </Link>
               )}
-              <h1 className="text-4xl font-bold text-neutral-900">{name}</h1>
+              <h1 className="text-4xl font-bold text-white">{name}</h1>
               {product.size && (
-                <span className="inline-flex self-start bg-neutral-900 text-white text-sm px-4 py-1.5 rounded-sm font-medium">
+                <span className="inline-flex self-start bg-white text-neutral-900 text-sm px-4 py-1.5 rounded-sm font-medium">
                   {product.size}
                 </span>
               )}
-              <p className="text-neutral-600 leading-relaxed">{description}</p>
-              <div className="pt-4 border-t border-neutral-100">
-                <p className="text-sm text-neutral-500 mb-4">{t('contactForInfo')}</p>
+              <p className="text-white/85 leading-relaxed">{description}</p>
+              <div className="pt-4 border-t border-white/20">
+                <p className="text-sm text-white/70 mb-4">{t('contactForInfo')}</p>
                 <a
                   href={CONTACT.phoneHref}
-                  className="inline-flex items-center justify-center bg-neutral-900 text-white px-8 py-3 text-sm font-semibold rounded-sm hover:bg-neutral-700 transition-colors"
+                  className="inline-flex items-center justify-center bg-white text-neutral-900 px-8 py-3 text-sm font-semibold rounded-sm hover:bg-white/90 transition-colors"
                 >
                   <bdi dir="ltr">{CONTACT.phone}</bdi>
                 </a>
@@ -135,7 +135,7 @@ export default async function ProductDetailPage({ params }: Props) {
       {related.length > 0 && (
         <section className="py-16 px-4 bg-[var(--background)]">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-semibold text-neutral-900 mb-8">{t('relatedProducts')}</h2>
+            <h2 className="text-2xl font-semibold text-white mb-8">{t('relatedProducts')}</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {related.map((rp) => {
                 const rc = getCategoryById(rp.categoryId);

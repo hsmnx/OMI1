@@ -50,7 +50,7 @@ export const products: Product[] = [
     slug: 'eau-de-javel',
     categoryId: 'javel',
     nameFr: 'Eau de Javel',
-    nameAr: 'ماء الجاوي',
+    nameAr: 'ماء جافيل',
     size: '1L / 5L',
     scent: 'original',
     imageId: 8,

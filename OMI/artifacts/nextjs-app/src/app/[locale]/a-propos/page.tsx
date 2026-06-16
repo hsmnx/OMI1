@@ -117,7 +117,7 @@ export default async function AProposPage({ params }: Props) {
       <section className="py-16 px-4 bg-[var(--background)]">
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
           <div className="omi-animate">
-            <p className="text-xl text-neutral-700 leading-relaxed font-medium">{t('mission')}</p>
+            <p className="text-xl text-white leading-relaxed font-medium">{t('mission')}</p>
             <Link
               href="/produits"
               className="inline-block mt-6 bg-neutral-900 text-white px-8 py-3 text-sm font-semibold rounded-sm hover:bg-neutral-700 transition-colors duration-150 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"

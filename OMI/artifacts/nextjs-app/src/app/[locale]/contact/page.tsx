@@ -54,15 +54,15 @@ export default async function ContactPage({ params }: Props) {
           <div className="omi-animate">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-700 transition-colors mb-4"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white transition-colors mb-4"
             >
               <svg className="w-3 h-3 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
               {t_nav('home')}
             </Link>
-            <h1 className="text-4xl font-bold text-neutral-900 mb-2">{t('headline')}</h1>
-            <p className="text-neutral-500">{t('subheadline')}</p>
+            <h1 className="text-4xl font-bold text-white mb-2">{t('headline')}</h1>
+            <p className="text-white/80">{t('subheadline')}</p>
           </div>
         </div>
       </section>
